@@ -14,6 +14,10 @@
  -----------------------------------------------------------------------------------
  */
 #include <iostream>
+#include "Vecteur.h"
+#include "Matrice.h"
+#include "VecteurImpl.h"
+#include "MatriceImpl.h"
 
 int main(int argc, const char * argv[]) {
     // insert code here...

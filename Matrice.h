@@ -16,5 +16,5 @@
 #ifndef Matrice_h
 #define Matrice_h
 
-
+#include "MatriceImpl.h"
 #endif /* Matrice_h */

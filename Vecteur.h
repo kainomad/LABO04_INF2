@@ -18,4 +18,7 @@
 #define Vecteur_h
 
 
+
+#include "VecteurImpl.h"
 #endif /* Vecteur_h */
+
