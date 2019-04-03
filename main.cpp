@@ -13,14 +13,16 @@
  Compilateur : MinGW-g++ 6.3.0
  -----------------------------------------------------------------------------------
  */
+
 #include <iostream>
 #include "Vecteur.h"
 #include "Matrice.h"
 #include "VecteurImpl.h"
 #include "MatriceImpl.h"
 
-int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
-    return 0;
+int main() {
+
+    
+    
+    return EXIT_SUCCESS;
 }

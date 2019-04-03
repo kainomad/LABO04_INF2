@@ -1,13 +1,51 @@
-//
-//  VecteurImpl.h
-//  LABO04_INF2
-//
-//  Created by Johann Werkle on 02.04.19.
-//  Copyright © 2019 Johann Werkle. All rights reserved.
-//
+/*
+ -----------------------------------------------------------------------------------
+ Laboratoire : 04
+ Fichier     : main.cpp
+ Groupe      : Labo_04
+ Auteur(s)   : Chau Ying Kot, Johann Werkle
+ Date        : 02.04.2019
+ 
+ But         :
+ 
+ Remarque(s) : -
+ 
+ Compilateur : MinGW-g++ 6.3.0
+ -----------------------------------------------------------------------------------
+ */
 
 #ifndef VecteurImpl_h
 #define VecteurImpl_h
+
+
+template <typename T>
+T Vecteur<T>::somme() const{
+    try{
+        // faire une méthode à part pour la vérification
+        if (isdigit(this->vector.at(0))){
+            //throw <#expression#>;
+        }
+        
+    }
+    catch(
+    return this->v.size();
+}
+
+template <typename T>
+size_t Vecteur<T>::size() const{
+    
+    return this->v.size();
+}
+
+template <typename T>
+void Vecteur<T>::resize(size_t n){
+    this->v.resize(n);
+}
+/*template <typename T>
+ void Vecteur<T>::resize(size_t n, const T& val){
+ 
+ }
+ */
 
 
 #endif /* VecteurImpl_h */

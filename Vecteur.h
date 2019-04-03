@@ -16,6 +16,25 @@
 
 #ifndef Vecteur_h
 #define Vecteur_h
+#include <vector>
+#include <string>
+#include <iostream>
+
+using namespace std;
+
+template <typename T>
+class Vecteur {
+private:
+    
+    
+    size_t size() const;
+    void resize(size_t n);
+//    void resize(size_t n, const T& val);
+    T somme() const;
+public:
+    vector<T> v;
+};
+
 
 
 
