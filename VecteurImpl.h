@@ -17,6 +17,25 @@
 #ifndef VecteurImpl_h
 #define VecteurImpl_h
 
+#include <vector>
+#include <ostream>
+
+template <typename T>
+T& Vecteur<T>::at(size_t n) {
+    return data.at(n);
+}
+
+template <typename T>
+const T& Vecteur<T>::at(size_t n) const{
+    return data.at(n);
+}
+
+template <typename T>
+size_t Vecteur<T>::size() const {
+    return data.size();
+}
+
+
 
 template <typename T>
 T Vecteur<T>::somme() const{
