@@ -19,27 +19,11 @@
 #include <vector>
 #include <string>
 #include <iostream>
-
+#include <ostream>
 using namespace std;
 
 template <typename T>
-class Vecteur {
-private:
-    
-    
-    size_t size() const;
-    void resize(size_t n);
-//    void resize(size_t n, const T& val);
-    T somme() const;
-public:
-    vector<T> v;
-};
-
-
-#include <vector>
-#include <ostream>
-
-template <typename T> class Vecteur;
+class Vecteur;
 
 template <typename T>
 std::ostream& operator<<(std::ostream& os, const Vecteur<T>& vector){
@@ -54,22 +38,37 @@ std::ostream& operator<<(std::ostream& os, const Vecteur<T>& vector){
     return os ;
 }
 
-template <typename T> class Vecteur{
-    friend std::ostream& operator<< <T> (std::ostream& os, const Vecteur<T>& vecteur);
+template <typename T>
+class Vecteur {
 public:
+    Vecteur() : data(std::vector<T>(0)) {};
     Vecteur(size_t n) : data(std::vector<T>(n)) {};
     Vecteur(std::vector<T> vector) : data(vector) {};
+    
+    friend std::ostream& operator<< <T> (std::ostream& os, const Vecteur<T>& vecteur);
+    Vecteur<T> operator*(const Vecteur<T>& v2) const;
+    Vecteur<T> operator+(const Vecteur<T>& v2) const;
+    Vecteur<T> operator-(const Vecteur<T>& v2) const;
+    Vecteur<T> operator*(const T mult) const;
+//    std::ostream& operator* <T> (T value);
 
+    
     size_t size() const;
-
+    
     T& at(size_t n);
     const T& at(size_t n) const;
-
-
-
+    void resize(size_t n);
+    void resize(size_t n, const T& valCompl);
+    T somme() const;
+    
 private:
     std::vector<T> data;
 };
+
+
+//template <typename T> class Vecteur;
+
+
 
 
 

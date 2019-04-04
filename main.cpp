@@ -15,6 +15,7 @@
  */
 
 #include <iostream>
+#include <vector>
 #include "Vecteur.h"
 #include "Matrice.h"
 #include "VecteurImpl.h"
@@ -22,7 +23,16 @@
 
 int main() {
 
-    
+    vector<int> a = {1,2,3,4,5};
+    vector<int> b = {2,3,4,5,6};
+    Vecteur<int> aBis = a;
+    Vecteur<int> bBis = b;
+    Vecteur<int> c = aBis*bBis;
+    cout << c;
+    Vecteur<int> d = aBis+bBis;
+    cout << d;
+    Vecteur<int> e = bBis-aBis;
+    cout << e;
     
     return EXIT_SUCCESS;
 }
