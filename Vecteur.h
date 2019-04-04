@@ -20,7 +20,7 @@
 #include <string>
 #include <iostream>
 #include <ostream>
-#include "Vector_errors.h"
+//#include "Vector_errors.h"
 
 template <typename T>
 class Vecteur;
