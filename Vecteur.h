@@ -20,7 +20,6 @@
 #include <string>
 #include <iostream>
 #include <ostream>
-using namespace std;
 
 template <typename T>
 class Vecteur;

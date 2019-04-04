@@ -19,6 +19,7 @@
 
 #include <vector>
 #include <ostream>
+//#include <cmaths>
 
 template <typename T>
 T& Vecteur<T>::at(size_t n) {
@@ -47,28 +48,17 @@ template <typename T>
 template <typename T>
 T Vecteur<T>::somme() const{
     T total = 0;
-    try{
-        
         for (int i = 0; i < data.size(); i++){
             total += data.at(i);
         }
-        // faire une méthode à part pour la vérification
-        if (isdigit(this->vector.at(0))){
-            //throw <#expression#>;
-        }
-        
-    }
-    catch(exception& e){
-        cout << e.what();
-    }
     return total;
 
 }
 
 template <typename T>
 Vecteur<T> Vecteur<T>::operator*(const Vecteur<T>& v2) const{
-    vector<T> result;
-    size_t tailleMax = max(data.size(), v2.size());
+    std::vector<T> result;
+    size_t tailleMax = std::max(data.size(), v2.size());
     for (size_t i = 0; i < tailleMax ; i++){
         result.push_back (data.at(i) * v2.at(i));
     }
@@ -78,7 +68,7 @@ Vecteur<T> Vecteur<T>::operator*(const Vecteur<T>& v2) const{
 
 template <typename T>
 Vecteur<T> Vecteur<T>::operator*(const T mult) const{
-    vector<T> result;
+    std::vector<T> result;
     for (size_t i = 0; i < data.size(); i++){
         result.push_back (data.at(i) * mult);
     }
@@ -87,8 +77,8 @@ Vecteur<T> Vecteur<T>::operator*(const T mult) const{
 
 template <typename T>
 Vecteur<T> Vecteur<T>::operator+(const Vecteur<T>& v2) const{
-    vector<T> result;
-    size_t tailleMax = max(data.size(), v2.size());
+    std::vector<T> result;
+    size_t tailleMax = std::max(data.size(), v2.size());
     for (size_t i = 0; i < tailleMax ; i++){
         result.push_back (data.at(i) + v2.at(i));
     }
@@ -97,8 +87,8 @@ Vecteur<T> Vecteur<T>::operator+(const Vecteur<T>& v2) const{
 
 template <typename T>
 Vecteur<T> Vecteur<T>::operator-(const Vecteur<T>& v2) const{
-    vector<T> result;
-    size_t tailleMax = max(data.size(), v2.size());
+    std::vector<T> result;
+    size_t tailleMax = std::max(data.size(), v2.size());
     for (size_t i = 0; i < tailleMax ; i++){
         result.push_back (data.at(i) - v2.at(i));
     }

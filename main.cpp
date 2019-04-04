@@ -20,7 +20,7 @@
 #include "Matrice.h"
 #include "VecteurImpl.h"
 #include "MatriceImpl.h"
-
+using namespace std;
 int main() {
 
     vector<int> a = {1,2,3,4,5};
@@ -32,6 +32,10 @@ int main() {
     Vecteur<int> d = aBis+bBis;
     cout << d;
     Vecteur<int> e = bBis-aBis;
+    cout << e;
+    e.resize(4);
+    cout << e;
+    e.resize(6,4);
     cout << e;
     
     return EXIT_SUCCESS;
