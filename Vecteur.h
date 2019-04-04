@@ -20,7 +20,7 @@
 #include <string>
 #include <iostream>
 #include <ostream>
-using namespace std;
+#include "Vector_errors.h"
 
 template <typename T>
 class Vecteur;
@@ -52,9 +52,8 @@ public:
     Vecteur<T> operator*(const T mult) const;
 //    std::ostream& operator* <T> (T value);
 
-    
-    size_t size() const;
-    
+    size_t size() const noexcept ;
+
     T& at(size_t n);
     const T& at(size_t n) const;
     void resize(size_t n);

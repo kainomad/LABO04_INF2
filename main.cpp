@@ -15,7 +15,8 @@
  */
 
 #include <iostream>
-#include <vector>
+#include <cstdlib>
+
 #include "Vecteur.h"
 #include "Matrice.h"
 #include "VecteurImpl.h"
@@ -34,5 +35,19 @@ int main() {
     Vecteur<int> e = bBis-aBis;
     cout << e;
     
+    return EXIT_SUCCESS;
+using namespace std;
+
+int main() {
+
+    Vecteur<int> test(4);
+    cout << test << endl;
+    cout << test.size() << endl;
+
+    Vecteur<int> test1(test);
+    test1.at(6) = 10;
+    cout << test1 << endl;
+
+    system("PAUSE");
     return EXIT_SUCCESS;
 }

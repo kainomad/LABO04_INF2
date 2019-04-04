@@ -20,18 +20,32 @@
 #include <vector>
 #include <ostream>
 
-template <typename T>
+template<typename T>
 T& Vecteur<T>::at(size_t n) {
-    return data.at(n);
+    try {
+        return data.at(n);
+    } catch (std::out_of_range& e) {
+        std::cout
+                << "Dans Vecteur : La position donnee depasse la taille du vecteur"
+                << std::endl;
+        exit(EXIT_FAILURE);
+    }
 }
 
-template <typename T>
-const T& Vecteur<T>::at(size_t n) const{
-    return data.at(n);
+template<typename T>
+const T& Vecteur<T>::at(size_t n) const {
+    try {
+        return data.at(n);
+    } catch (std::out_of_range& e) {
+        std::cout
+                << "Dans Vecteur : La position donnee depasse la taille du vecteur"
+                << e.what();
+        exit(EXIT_FAILURE);
+    }
 }
 
-template <typename T>
-size_t Vecteur<T>::size() const {
+template<typename T>
+size_t Vecteur<T>::size() const noexcept {
     return data.size();
 }
 
@@ -104,7 +118,6 @@ Vecteur<T> Vecteur<T>::operator-(const Vecteur<T>& v2) const{
     }
     return result;
 }
-
 
 
 #endif /* VecteurImpl_h */
