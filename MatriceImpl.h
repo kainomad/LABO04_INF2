@@ -16,5 +16,15 @@
 #ifndef MatriceImpl_h
 #define MatriceImpl_h
 
+template<typename T>
+size_t Matrice<T>::size() const noexcept{
+    return matrice.size();
+}
+
+template<typename T>
+const Ligne<T>& Matrice<T>::at(size_t i) const{
+    return matrice.at(i);
+}
+
 
 #endif /* MatriceImpl_h */
