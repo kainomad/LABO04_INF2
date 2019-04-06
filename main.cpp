@@ -21,6 +21,7 @@
 #include "Matrice.h"
 #include "VecteurImpl.h"
 #include "MatriceImpl.h"
+
 using namespace std;
 int main() {
 
@@ -41,16 +42,29 @@ int main() {
     e.resize(6,4);
     cout << "resize2 " <<  e << endl;
     cout << "size " <<  e.size() << endl;
-    Vecteur<int> test(4);
-    cout << test << endl;
-    cout << test.size() << endl;
-    
-    Vecteur<int> test1(test);
-    test1.at(6) = 10;
-    cout << test1 << endl;
-    
+
+    Matrice<int> m(3,2);
+    m.resize(2,2);
+    cout << "resize ligne et colonne a 6 " << m << endl;
+    m.resize(5);
+    cout << "resize ligne a 5 " << m << endl;
+
+    Matrice<int> mVide(0);
+    cout << "Matrice mVide : " << boolalpha << mVide.estVide() << endl;
+
+    cout << "Matrice m regiliere : " << boolalpha << m.estReguliere() << endl;
+
+    m.at(1) = a;
+    m.at(0) = b;
+    cout << "somme des lignes de " << m  << ":" << m.sommeLigne() << endl;
+    cout << "somme des colonnes de " << m  << ":" << m.sommeColonne() << endl;
+    m.resize(5,5);
+    cout << "somme des diagonale GD de " << m << ": " << m.sommeDiagonaleGD() <<
+         endl;
+    cout << "somme des diagonale DG de " << m << ": " << m.sommeDiagonaleDG() <<
+         endl;
+
     system("PAUSE");
-    
     return EXIT_SUCCESS;
 }
 

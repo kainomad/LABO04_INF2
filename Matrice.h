@@ -34,6 +34,9 @@ std::ostream& operator<<(std::ostream& os, const Matrice<T>& matrice){
     return os ;
 }
 
+
+
+
 template <typename T>
 class Matrice{
     friend std::ostream& operator<< <T> (std::ostream& os, const Matrice<T>& vecteur);
@@ -42,9 +45,10 @@ class Matrice{
 public:
     Matrice() {}
     Matrice(size_t ligne) : matrice(Vecteur<Vecteur<T>>(ligne)) {};
-    Matrice(const Vecteur<T>& ligne, const Vecteur<T>& colonne) {
+    Matrice(size_t ligne, size_t colonne) : matrice(Vecteur<Vecteur<T>>(ligne)) {
         for(size_t i = 0; i < ligne ;++i){
-            matrice.at(i) = Ligne<T>(colonne);
+            this->at(i).resize(colonne);
+            this->at(i) = Ligne<T>(colonne);
         }
     };
 
@@ -52,6 +56,18 @@ public:
 
     Ligne<T>& at(size_t i);
     const Ligne<T>& at(size_t i) const;
+
+    void resize(size_t ligne);
+    void resize(size_t ligne, size_t colonne);
+
+    bool estVide() const noexcept;
+    bool estReguliere() const noexcept;
+
+    Vecteur<T> sommeLigne() const;
+    Vecteur<T> sommeColonne() const;
+
+    T sommeDiagonaleGD() const;
+    T sommeDiagonaleDG() const;
 
 
 private:
