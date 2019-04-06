@@ -50,11 +50,11 @@ size_t Vecteur<T>::size() const noexcept {
 }
 
 template <typename T>
-void Vecteur<T>::resize(size_t n){
+void Vecteur<T>::resize(size_t n) noexcept{
     data.resize(n);
 }
 template <typename T>
- void Vecteur<T>::resize(size_t n, const T& valCompl){
+ void Vecteur<T>::resize(size_t n, const T& valCompl) noexcept{
  data.resize(n, valCompl);
  }
 
