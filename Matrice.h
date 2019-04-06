@@ -16,7 +16,7 @@
 #ifndef Matrice_h
 #define Matrice_h
 
-#include <Vecteur.h>
+#include "Vecteur.h"
 
 template <typename T> using Ligne = Vecteur<T>;
 

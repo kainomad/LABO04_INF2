@@ -60,11 +60,22 @@ template <typename T>
 
 template <typename T>
 T Vecteur<T>::somme() const{
+    std::cout << "test" << std::endl;
+    try {
     T total = 0;
+        std::cout << "test1" << std::endl;
         for (int i = 0; i < data.size(); i++){
             total += data.at(i);
         }
+        std::cout << "test2" << std::endl;
     return total;
+    }
+    catch (std::invalid_argument & e){
+        // trouver la bonne erreur
+        std::cout << "Dans Vecteur : Somme impossible avec ce type de données"
+        << e.what();
+        exit(EXIT_FAILURE);
+    }
 
 }
 

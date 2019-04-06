@@ -47,13 +47,11 @@ public:
     
     friend std::ostream& operator<< <T> (std::ostream& os, const Vecteur<T>& vecteur);
     Vecteur<T> operator*(const Vecteur<T>& v2) const;
+    Vecteur<T> operator*(const T mult) const;
     Vecteur<T> operator+(const Vecteur<T>& v2) const;
     Vecteur<T> operator-(const Vecteur<T>& v2) const;
-    Vecteur<T> operator*(const T mult) const;
-//    std::ostream& operator* <T> (T value);
-
+    
     size_t size() const noexcept ;
-
     T& at(size_t n);
     const T& at(size_t n) const;
     void resize(size_t n) noexcept;
@@ -64,8 +62,6 @@ private:
     std::vector<T> data;
 };
 
-
-//template <typename T> class Vecteur;
 
 
 
