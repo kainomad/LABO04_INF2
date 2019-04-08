@@ -81,6 +81,7 @@ T Vecteur<T>::somme() const{
 
 template <typename T>
 Vecteur<T> Vecteur<T>::operator*(const Vecteur<T>& v2) const{
+    try {
     std::vector<T> result;
     size_t tailleMax = std::max(data.size(), v2.size());
     for (size_t i = 0; i < tailleMax ; i++){
@@ -88,35 +89,50 @@ Vecteur<T> Vecteur<T>::operator*(const Vecteur<T>& v2) const{
     }
     
     return result;
+    }
+    catch (std::invalid_argument & e){
+    }
 }
 
 template <typename T>
 Vecteur<T> Vecteur<T>::operator*(const T mult) const{
+    try{
     std::vector<T> result;
     for (size_t i = 0; i < data.size(); i++){
         result.push_back (data.at(i) * mult);
     }
     return result;
+    }
+    catch (std::invalid_argument & e){
+    }
 }
 
 template <typename T>
 Vecteur<T> Vecteur<T>::operator+(const Vecteur<T>& v2) const{
+    try {
     std::vector<T> result;
     size_t tailleMax = std::max(data.size(), v2.size());
     for (size_t i = 0; i < tailleMax ; i++){
         result.push_back (data.at(i) + v2.at(i));
     }
     return result;
+    }
+    catch (std::invalid_argument & e){
+    }
 }
 
 template <typename T>
 Vecteur<T> Vecteur<T>::operator-(const Vecteur<T>& v2) const{
+    try{
     std::vector<T> result;
     size_t tailleMax = std::max(data.size(), v2.size());
     for (size_t i = 0; i < tailleMax ; i++){
         result.push_back (data.at(i) - v2.at(i));
     }
     return result;
+    }
+    catch (std::invalid_argument & e){
+    }
 }
 
 
