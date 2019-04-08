@@ -24,11 +24,9 @@ template<typename T>
 T& Vecteur<T>::at(size_t n) {
     try {
         return data.at(n);
-    } catch (std::out_of_range& e) {
-        std::cout << "Methode at() " << std::endl
-                << "Dans Vecteur : La position donnee depasse la taille du vecteur"
-                << std::endl;
-        throw;
+    }  catch (std::out_of_range& e) {
+        throw std::out_of_range("Dans Vecteur : La position donnee depasse la "
+                                "taille du vecteur ");
     }
 }
 
@@ -37,10 +35,8 @@ const T& Vecteur<T>::at(size_t n) const {
     try {
         return data.at(n);
     } catch (std::out_of_range& e) {
-        std::cout
-                << "Dans Vecteur : La position donnee depasse la taille du vecteur"
-                << e.what();
-        exit(EXIT_FAILURE);
+        throw std::out_of_range("Dans Vecteur : La position donnee depasse la "
+                                "taille du vecteur ");
     }
 }
 
