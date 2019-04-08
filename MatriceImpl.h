@@ -128,6 +128,42 @@ T Matrice<T>::sommeDiagonaleDG() const {
         return res;
     } catch (std::out_of_range& e){
         std::cout << e.what() << std::endl;
-    }}
+    }
+}
+
+template<typename T>
+Matrice<T> Matrice<T>::operator*(const T& val) {
+    Matrice temp(this->size());
+    for(size_t i  = 0; i < this->size(); ++i){
+        temp.at(i) = this->at(i)*val;
+    }
+    return temp;
+}
+
+
+template<typename T>
+Matrice<T> Matrice<T>::operator*(const Matrice<T>& matrice) {
+    try {
+
+        if (this->size() != matrice.size()) {
+            throw std::out_of_range("les colonnes ne sont pas compatible");
+        }
+        Matrice temp(this->size());
+        for (size_t i = 0; i < this->size(); ++i) {
+            if (this->at(i).size() != matrice.at(i).size()) {
+                throw std::out_of_range("les colonnes ne sont pas compatible");
+            }
+            temp.at(i).resize(this->at(i).size());
+            for(size_t j = 0; j < this->at(i).size(); ++j){
+                temp.at(i).at(j) = this->at(i).at(j) * matrice.at(i).at(j);
+            }
+        }
+        return temp;
+    }
+    catch(std::out_of_range& e){
+        std::cout << e.what() << std::endl;
+    }
+}
+
 
 #endif /* MatriceImpl_h */

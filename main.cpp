@@ -25,10 +25,10 @@
 using namespace std;
 int main() {
 
-    
-    /*  TESTS VECTEUR */
-    vector<int> a = {1,2,3,4,5};
-    vector<int> b = {2,3,4,5,6};
+    cout << "TEST VECTEUR" << endl;
+
+    vector<int> a = {1, 2, 3, 4, 5};
+    vector<int> b = {2, 3, 4, 5, 6};
     Vecteur<int> aBis = a;
     Vecteur<int> bBis = b;
     Vecteur<string> str = vector<string>{"test", "test2", "test3"};
@@ -67,8 +67,10 @@ int main() {
     cout << "somme des diagonale DG de " << m << ": " << m.sommeDiagonaleDG() <<
          endl;
 
+    cout << "multi par 2 de " << m << ": "  << m*2 << endl;
+
+    cout << "multi par elle meme : "<< m*m << endl;
+
     system("PAUSE");
     return EXIT_SUCCESS;
 }
-
-
