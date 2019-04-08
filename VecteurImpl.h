@@ -25,10 +25,10 @@ T& Vecteur<T>::at(size_t n) {
     try {
         return data.at(n);
     } catch (std::out_of_range& e) {
-        std::cout
+        std::cout << "Methode at() " << std::endl
                 << "Dans Vecteur : La position donnee depasse la taille du vecteur"
                 << std::endl;
-        exit(EXIT_FAILURE);
+        throw;
     }
 }
 
@@ -90,12 +90,21 @@ Vecteur<T> Vecteur<T>::operator*(const T mult) const{
 
 template <typename T>
 Vecteur<T> Vecteur<T>::operator+(const Vecteur<T>& v2) const{
+
     std::vector<T> result;
     size_t tailleMax = std::max(data.size(), v2.size());
-    for (size_t i = 0; i < tailleMax ; i++){
-        result.push_back (data.at(i) + v2.at(i));
+    for (size_t i = 0; i < tailleMax ; ++i){
+        try{
+            if((std::numeric_limits<T>::max() - data.at(i)) < v2.at(i)){
+                throw std::overflow_error("Vecteur overflow");
+            }
+            result.push_back (data.at(i) + v2.at(i));
+            return result;
+        } catch (std::overflow_error& e){
+            std::cout << e.what() << std::endl;
+            throw ;
+        }
     }
-    return result;
 }
 
 template <typename T>

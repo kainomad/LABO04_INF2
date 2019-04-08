@@ -26,12 +26,26 @@ size_t Matrice<T>::size() const noexcept {
 
 template<typename T>
 const Ligne<T>& Matrice<T>::at(size_t i) const {
-    return this->matrice.at(i);
+    try{
+        return this->matrice.at(i);
+    } catch (std::out_of_range& e) {
+        std::cout
+                << "Dans Matrice : La position donnee depasse la taille de la matrice"
+                << std::endl;
+        exit(EXIT_FAILURE);
+    }
 }
 
 template<typename T>
 Ligne<T>& Matrice<T>::at(size_t i) {
-    return this->matrice.at(i);
+    try{
+        return this->matrice.at(i);
+    } catch (std::out_of_range& e) {
+        std::cout
+                << "Dans Matrice : La position donnee depasse la taille de la matrice"
+                << std::endl;
+        exit(EXIT_FAILURE);
+    }
 }
 
 //TODO Resize ajout de 0 ?
@@ -81,9 +95,7 @@ template<typename T>
 Vecteur<T> Matrice<T>::sommeLigne() const {
     Vecteur<T> resultat(this->matrice.size());
     for (size_t i = 0; i < this->matrice.size(); ++i) {
-        for (size_t j = 0; j < this->matrice.at(i).size(); ++j) {
-            resultat.at(i) += this->matrice.at(i).at(j);
-        }
+            resultat.at(i) += this->matrice.at(i).somme();
     }
     return resultat;
 }
@@ -187,6 +199,11 @@ Matrice<T> Matrice<T>::operator+(const Matrice<T>& matrice) const {
     }
     catch (std::out_of_range& e) {
         std::cout << e.what() << std::endl;
+        exit(EXIT_FAILURE);
+    }
+    catch (std::overflow_error& e){
+        std::cout << e.what() << std::endl;
+        exit(EXIT_FAILURE);
     }
 }
 
