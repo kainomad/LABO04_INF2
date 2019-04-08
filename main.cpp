@@ -66,9 +66,11 @@ int main() {
     cout << "somme des diagonale DG de " << m << ": " << m.sommeDiagonaleDG() <<
          endl;
 
-    cout << "multi par 2 de " << m << ": "  << m*2 << endl;
+    cout << "multi par 2 de " << m << ": "  << 2*m << endl;
 
     cout << "multi par elle meme : "<< m*m << endl;
+
+    cout << "add par elle meme : "<< m+m << endl;
 
     system("PAUSE");
     return EXIT_SUCCESS;

@@ -34,11 +34,25 @@ std::ostream& operator<<(std::ostream& os, const Matrice<T>& matrice){
     return os ;
 }
 
+template<typename T>
+Matrice<T> operator*(const Matrice<T>& matrice, const T& val) {
+    Matrice<T> temp(matrice.size());
+    for(size_t i  = 0; i < matrice.size(); ++i){
+        temp.at(i) = matrice.at(i)*val;
+    }
+    return temp;
+}
+
+template<typename T>
+Matrice<T> operator*(const T& val, const Matrice<T>& matrice) {
+    return matrice * val;
+}
+
+
 
 template <typename T>
 class Matrice{
     friend std::ostream& operator<< <T> (std::ostream& os, const Matrice<T>& vecteur);
-
 
 public:
     Matrice() {}
@@ -66,8 +80,9 @@ public:
     T sommeDiagonaleGD() const;
     T sommeDiagonaleDG() const;
 
-    Matrice<T> operator*(const T& val);
-    Matrice<T> operator*(const Matrice<T>& matrice);
+    Matrice<T> operator*(const T& val) const;
+    Matrice<T> operator*(const Matrice<T>& matrice) const;
+    Matrice<T> operator+(const Matrice<T>& matrice) const;
 
 
 private:
