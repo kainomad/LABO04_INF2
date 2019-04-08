@@ -50,6 +50,7 @@ Ligne<T>& Matrice<T>::at(size_t i) {
 template<typename T>
 void Matrice<T>::resize(size_t ligne) {
     this->matrice.resize(ligne);
+
 }
 
 template<typename T>
@@ -93,7 +94,11 @@ template<typename T>
 Vecteur<T> Matrice<T>::sommeLigne() const {
     Vecteur<T> resultat(this->matrice.size());
     for (size_t i = 0; i < this->matrice.size(); ++i) {
+        try {
             resultat.at(i) += this->matrice.at(i).somme();
+        } catch (std::overflow_error& e) {
+            throw std::overflow_error("Dans Matrice : overflow");
+        }
     }
     return resultat;
 }
@@ -104,7 +109,12 @@ Vecteur<T> Matrice<T>::sommeColonne() const {
     Vecteur<T> resultat(this->matrice.at(1).size());
     for (size_t i = 0; i < this->matrice.size(); ++i) {
         for (size_t j = 0; j < this->matrice.at(i).size(); ++j) {
-            resultat.at(j) += this->matrice.at(i).at(j);
+            try {
+                resultat.at(j) += this->matrice.at(i).at(j);
+            } catch (std::overflow_error& e) {
+                throw std::overflow_error("Dans Matrice : overflow");
+            }
+
         }
     }
     return resultat;
@@ -119,6 +129,11 @@ T Matrice<T>::sommeDiagonaleGD() const {
     }
     T res = 0;
     for (size_t i = 0; i < this->matrice.size(); ++i) {
+        if ((std::numeric_limits<T>::max() - res) < matrice.at(i).at(i)) {
+            throw std::overflow_error(
+                    "Dans Matrice : le resultat de l'operation "
+                    "depasse la capcite du type");
+        }
         res += this->matrice.at(i).at(i);
     }
     return res;
@@ -133,6 +148,12 @@ T Matrice<T>::sommeDiagonaleDG() const {
     }
     T res = 0;
     for (size_t i = 0; i < this->matrice.size(); ++i) {
+        if ((std::numeric_limits<T>::max() - res) <
+            matrice.at(i).at(this->matrice.size() - 1 - i)) {
+            throw std::overflow_error(
+                    "Dans Matrice : le resultat de l'operation "
+                    "depasse la capcite du type");
+        }
         res += this->matrice.at(i).at(this->matrice.size() - 1 - i);
     }
     return res;
@@ -190,12 +211,8 @@ Matrice<T> Matrice<T>::operator+(const Matrice<T>& matrice) const {
         return temp;
     }
     catch (std::overflow_error& e) {
-        throw std::out_of_range("Dans Matrice : le resultat de l'operation demandée"
+        throw std::out_of_range("Dans Matrice : le resultat de l'operation demandee"
                                 " depasse la capacite du type");
-    }
-    catch (std::overflow_error& e){
-        std::cout << e.what() << std::endl;
-        exit(EXIT_FAILURE);
     }
 }
 

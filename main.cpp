@@ -37,10 +37,10 @@ int main() {
     cout << "TEST AVEC INT ---------------" << endl;
     test(aInt,bInt,2);
 
-    vector<char> aChar = {'a','b', 'c'};
-    vector<char> bChar = {'d','e', 'f'};
-    cout << "TEST AVEC CHAR---------------"  << endl;
-    test(aChar, bChar, 'o');
+//    vector<char> aChar = {'a','b', 'c'};
+//    vector<char> bChar = {'a','b', 'f'};
+//    cout << "TEST AVEC CHAR---------------"  << endl;
+//    test(aChar, bChar, 'a');
 
     vector<double> aDouble = {1.0, 3.4, 5.6};
     vector<double> bDouble = {5.7,.3, 8.2};
@@ -98,7 +98,7 @@ void test(vector<T> a, vector<T> b, const T& val){
     cout << "somme des diagonale DG de " << m << ": " << m.sommeDiagonaleDG() <<
          endl;
 
-    cout << "multi par 2 de " << m << ": "  << 2*val << endl;
+    cout << "multi par "<< val << " : " << m << ": "  << m*val << endl;
 
     cout << "multi par elle meme : "<< m*m << endl;
 
