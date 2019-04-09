@@ -25,10 +25,8 @@ T& Vecteur<T>::at(size_t n) {
     try {
         return data.at(n);
     } catch (std::out_of_range& e) {
-        std::cout
-        << "Dans Vecteur : La position donnee depasse la taille du vecteur"
-        << std::endl;
-        exit(EXIT_FAILURE);
+        throw std::out_of_range("Dans Vecteur : La position donnee depasse la "
+                                "taille du vecteur ");
     }
 }
 
@@ -37,10 +35,8 @@ const T& Vecteur<T>::at(size_t n) const {
     try {
         return data.at(n);
     } catch (std::out_of_range& e) {
-        std::cout
-        << "Dans Vecteur : La position donnee depasse la taille du vecteur"
-        << e.what();
-        exit(EXIT_FAILURE);
+        throw std::out_of_range("Dans Vecteur : La position donnee depasse la "
+                                "taille du vecteur ");
     }
 }
 
@@ -49,14 +45,23 @@ size_t Vecteur<T>::size() const noexcept {
     return data.size();
 }
 
-template <typename T>
-void Vecteur<T>::resize(size_t n) noexcept{
+template<typename T>
+void Vecteur<T>::resize(size_t n) {
     data.resize(n);
 }
-template <typename T>
-void Vecteur<T>::resize(size_t n, const T& valCompl) noexcept{
+
+template<typename T>
+void Vecteur<T>::resize(size_t n, const T& valCompl) {
     data.resize(n, valCompl);
 }
+
+template<typename T>
+T Vecteur<T>::somme() const {
+    T total = 0;
+    for (size_t i = 0; i < data.size(); i++) {
+        total += data.at(i);
+    }
+    return total;
 
 template <typename T>
 T Vecteur<T>::somme() const{
@@ -77,76 +82,47 @@ T Vecteur<T>::somme() const{
     }
 }
 
-template <typename T>
-Vecteur<T> Vecteur<T>::operator*(const Vecteur<T>& v2) const{
+template<typename T>
+Vecteur<T> Vecteur<T>::operator*(const Vecteur<T>& v2) const {
     std::vector<T> result;
-    try {
-        size_t tailleMax = std::max(data.size(), v2.size());
-        for (size_t i = 0; i < tailleMax ; i++){
-            result.push_back (data.at(i) * v2.at(i));
-        }
+    size_t tailleMax = std::max(data.size(), v2.size());
+    for (size_t i = 0; i < tailleMax; i++) {
+        result.push_back(data.at(i) * v2.at(i));
     }
-    catch (std::out_of_range & e){
-        // trouver la bonne erreur
-        std::cout << "Le vecteur doit contenir au moins un élément pour faire une multiplication" << std::endl
-        << e.what();
-        exit(EXIT_FAILURE);
+
+    return result;
+}
+
+template<typename T>
+Vecteur<T> Vecteur<T>::operator*(const T mult) const {
+    std::vector<T> result;
+    for (size_t i = 0; i < data.size(); i++) {
+        result.push_back(data.at(i) * mult);
     }
     return result;
 }
 
-template <typename T>
-Vecteur<T> Vecteur<T>::operator*(const T mult) const{
+template<typename T>
+Vecteur<T> Vecteur<T>::operator+(const Vecteur<T>& v2) const {
     std::vector<T> result;
-    try{
-        for (size_t i = 0; i < data.size(); i++){
-            result.push_back (data.at(i) * mult);
+    size_t tailleMax = std::max(data.size(), v2.size());
+    for (size_t i = 0; i < tailleMax; ++i) {
+        if ((std::numeric_limits<T>::max() - data.at(i)) < v2.at(i)) {
+            throw std::overflow_error(
+                    "Dans Vecteur : le resultat de l'operation "
+                    "depasse la capcite du type");
         }
-    }
-    catch (std::out_of_range & e){
-        // trouver la bonne erreur
-        std::cout << "Le vecteur doit contenir au moins un élément pour faire une multiplication" << std::endl
-        << e.what();
-        exit(EXIT_FAILURE);
+        result.push_back(data.at(i) + v2.at(i));
     }
     return result;
 }
 
-template <typename T>
-Vecteur<T> Vecteur<T>::operator+(const Vecteur<T>& v2) const{
+template<typename T>
+Vecteur<T> Vecteur<T>::operator-(const Vecteur<T>& v2) const {
     std::vector<T> result;
-    try {
-        
-        size_t tailleMax = std::max(data.size(), v2.size());
-        for (size_t i = 0; i < tailleMax ; i++){
-            result.push_back (data.at(i) + v2.at(i));
-        }
-        
-    }
-    catch (std::out_of_range & e){
-        // trouver la bonne erreur
-        std::cout << "Le vecteur doit contenir au moins un élément pour faire une addition" << std::endl
-        << e.what();
-        exit(EXIT_FAILURE);
-    }
-    return result;
-}
-
-template <typename T>
-Vecteur<T> Vecteur<T>::operator-(const Vecteur<T>& v2) const{
-    std::vector<T> result;
-    try{
-        
-        size_t tailleMax = std::max(data.size(), v2.size());
-        for (size_t i = 0; i < tailleMax ; i++){
-            result.push_back (data.at(i) - v2.at(i));
-        }
-    }
-    catch (std::out_of_range & e){
-        // trouver la bonne erreur
-        std::cout << "Le vecteur doit contenir au moins un élément pour faire une soustraction" << std::endl
-        << e.what();
-        exit(EXIT_FAILURE);
+    size_t tailleMax = std::max(data.size(), v2.size());
+    for (size_t i = 0; i < tailleMax; i++) {
+        result.push_back(data.at(i) - v2.at(i));
     }
     return result;
 }
