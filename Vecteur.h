@@ -16,8 +16,6 @@
 
 #ifndef Vecteur_h
 #define Vecteur_h
-#include <vector>
-#include <string>
 #include <iostream>
 #include <ostream>
 //#include "Vector_errors.h"
@@ -49,7 +47,7 @@ public:
     Vecteur<T> operator*(const Vecteur<T>& v2) const;
     Vecteur<T> operator*(const T mult) const;
     friend Vecteur<T> operator*(const T mult, const Vecteur<T>& v){
-        //Nécessaire pour instancier la fonction dans le main
+        //Nécessaire pour instancier la fonction dans le main à la compilation
         return v * mult;
     }
     Vecteur<T> operator+(const Vecteur<T>& v2) const;
