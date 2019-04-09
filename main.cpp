@@ -73,7 +73,6 @@ void test(vector<T> a, vector<T> b, const T& val){
     e.resize(6,4);
     cout << "resize2 " <<  e << endl;
     cout << "size " <<  e.size() << endl;
-    cout << "somme string " << str.somme() << endl;
 
     cout << endl;
     cout << "TEST MATRICE" << endl << endl;

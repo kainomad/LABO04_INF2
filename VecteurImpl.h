@@ -55,14 +55,6 @@ void Vecteur<T>::resize(size_t n, const T& valCompl) {
     data.resize(n, valCompl);
 }
 
-template<typename T>
-T Vecteur<T>::somme() const {
-    T total = 0;
-    for (size_t i = 0; i < data.size(); i++) {
-        total += data.at(i);
-    }
-    return total;
-
 template <typename T>
 T Vecteur<T>::somme() const{
     try {

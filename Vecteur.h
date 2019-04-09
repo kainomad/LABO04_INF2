@@ -55,8 +55,8 @@ public:
     size_t size() const noexcept ;
     T& at(size_t n);
     const T& at(size_t n) const;
-    void resize(size_t n) noexcept;
-    void resize(size_t n, const T& valCompl) noexcept;
+    void resize(size_t n);
+    void resize(size_t n, const T& valCompl);
     T somme() const;
     
 private:
