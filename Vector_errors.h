@@ -9,21 +9,18 @@
 #include <stdexcept>
 
 
-class DepacementCapacite : public std::out_of_range {
+class DepacementCapacite : public std::overflow_error {
 public:
     DepacementCapacite(const std::string& classe,
-                       const std::string& what_arg = ": le resultat de l'operation depasse la capcite du type") noexcept
-            : out_of_range(what_arg), currentClass(classe) {}
-
-    DepacementCapacite(const std::string& classe, const char* what_arg) noexcept
-            : out_of_range(what_arg), currentClass(classe) {}
+                       const std::string& what_arg = "le resultat de l'operation depasse la capcite du type") noexcept
+            :  currentClass(classe), overflow_error(what_arg) {}
 
     std::string where() const noexcept {
         return currentClass;
     }
 
 private:
-    const std::string currentClass;
+    const std::string currentClass = "";
 };
 
 

@@ -17,6 +17,8 @@
 #ifndef VecteurImpl_h
 #define VecteurImpl_h
 
+#include "Vector_errors.h"
+
 #include <vector>
 #include <ostream>
 
@@ -91,9 +93,7 @@ Vecteur<T> Vecteur<T>::operator+(const Vecteur<T>& v2) const {
     size_t tailleMax = std::max(data.size(), v2.size());
     for (size_t i = 0; i < tailleMax; ++i) {
         if ((std::numeric_limits<T>::max() - data.at(i)) < v2.at(i)) {
-            throw std::overflow_error(
-                    "Dans Vecteur : le resultat de l'operation "
-                    "depasse la capcite du type");
+            throw DepacementCapacite("Dans Vecteur ");
         }
         result.push_back(data.at(i) + v2.at(i));
     }
