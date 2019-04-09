@@ -112,6 +112,7 @@ T Matrice<T>::sommeDiagonaleGD() const {
         return res;
     } catch (std::out_of_range& e){
         std::cout << e.what() << std::endl;
+        return 0;
     }
 }
 
@@ -128,6 +129,7 @@ T Matrice<T>::sommeDiagonaleDG() const {
         return res;
     } catch (std::out_of_range& e){
         std::cout << e.what() << std::endl;
+        return 0;
     }
 }
 
@@ -162,6 +164,7 @@ Matrice<T> Matrice<T>::operator*(const Matrice<T>& matrice) {
     }
     catch(std::out_of_range& e){
         std::cout << e.what() << std::endl;
+        return 0;
     }
 }
 

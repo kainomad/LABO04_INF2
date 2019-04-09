@@ -48,9 +48,12 @@ public:
     friend std::ostream& operator<< <T> (std::ostream& os, const Vecteur<T>& vecteur);
     Vecteur<T> operator*(const Vecteur<T>& v2) const;
     Vecteur<T> operator*(const T mult) const;
+    friend Vecteur<T> operator*(const T mult, const Vecteur<T>& v){
+        //Nécessaire pour instancier la fonction dans le main
+        return v * mult;
+    }
     Vecteur<T> operator+(const Vecteur<T>& v2) const;
     Vecteur<T> operator-(const Vecteur<T>& v2) const;
-    
     size_t size() const noexcept ;
     T& at(size_t n);
     const T& at(size_t n) const;
@@ -69,4 +72,5 @@ private:
 
 #include "VecteurImpl.h"
 #endif /* Vecteur_h */
+
 

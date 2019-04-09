@@ -31,11 +31,15 @@ int main() {
     vector<int> b = {2, 3, 4, 5, 6};
     Vecteur<int> aBis = a;
     Vecteur<int> bBis = b;
-    Vecteur<string> str = vector<string>{"test", "test2", "test3"};
+    Vecteur<string> str = vector<string>{"test"};
     Vecteur<int> c = aBis*bBis;
     cout << "a*b " << c << endl;
     Vecteur<int> g = aBis*17;
     cout << "a*17 " << g << endl;
+    Vecteur<int> gBis = 17*aBis;
+    cout << "17*a " << gBis << endl;
+//    Vecteur<int> gBisBis = 17*str;
+//    cout << "str*17 " << gBisBis<< endl;
     Vecteur<int> d = aBis+bBis;
     cout << "a+b " << d << endl;
     Vecteur<int> e = bBis-aBis;
@@ -45,6 +49,7 @@ int main() {
     e.resize(6,4);
     cout << "resize2 " <<  e << endl;
     cout << "size " <<  e.size() << endl;
+    cout << "somme string " << str.somme() << endl;
 
     Matrice<int> m(3,2);
     m.resize(2,2);
