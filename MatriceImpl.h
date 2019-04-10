@@ -30,8 +30,9 @@ const Ligne<T>& Matrice<T>::at(size_t i) const {
         return this->matrice.at(i);
     }
     catch (std::out_of_range& e) {
-        throw std::out_of_range("Dans Matrice : La ligne donnee est plus grand que"
-                                " depasse la taille matrice");
+        throw std::out_of_range(
+                "Dans Matrice : La ligne donnee est plus grand que"
+                " depasse la taille matrice");
     }
 }
 
@@ -41,12 +42,12 @@ Ligne<T>& Matrice<T>::at(size_t i) {
         return this->matrice.at(i);
     }
     catch (std::out_of_range& e) {
-        throw std::out_of_range("Dans Matrice : La ligne donnee est plus grand que"
-                                " depasse la taille matrice");
+        throw std::out_of_range(
+                "Dans Matrice : La ligne donnee est plus grand que"
+                " depasse la taille matrice");
     }
 }
 
-//TODO Resize ajout de 0 ?
 template<typename T>
 void Matrice<T>::resize(size_t ligne) {
     this->matrice.resize(ligne);
@@ -61,19 +62,9 @@ void Matrice<T>::resize(size_t ligne, size_t colonne) {
     }
 }
 
-//TODO vide aucun elem sur tout la matrice ou uniquement sur les lignes ou les
-// colonne ?
 template<typename T>
 bool Matrice<T>::estVide() const noexcept {
-    if (this->matrice.size() == 0) {
-        return true;
-    }
-    for (size_t i = 0; i < this->matrice.size(); ++i) {
-        if (this->matrice.at(i).size() != 0) {
-            return false;
-        }
-    }
-    return true;
+    return this->matrice.size() == 0;
 }
 
 template<typename T>
@@ -96,8 +87,8 @@ Vecteur<T> Matrice<T>::sommeLigne() const {
     for (size_t i = 0; i < this->matrice.size(); ++i) {
         try {
             resultat.at(i) += this->matrice.at(i).somme();
-        } catch (std::overflow_error& e) {
-            throw std::overflow_error("Dans Matrice : overflow");
+        } catch (DepacementCapacite& e) {
+            throw DepacementCapacite("Dans Matrice");
         }
     }
     return resultat;
@@ -111,8 +102,8 @@ Vecteur<T> Matrice<T>::sommeColonne() const {
         for (size_t j = 0; j < this->matrice.at(i).size(); ++j) {
             try {
                 resultat.at(j) += this->matrice.at(i).at(j);
-            } catch (std::overflow_error& e) {
-                throw std::overflow_error("Dans Matrice : overflow");
+            } catch (DepacementCapacite& e) {
+                throw DepacementCapacite("Dans Matrice");
             }
 
         }
@@ -125,14 +116,13 @@ template<typename T>
 T Matrice<T>::sommeDiagonaleGD() const {
 
     if (!this->estReguliere()) {
-        throw std::out_of_range("Dans Matrice : la matrice n'est pas reguliere");
+        throw std::out_of_range(
+                "Dans Matrice : la matrice n'est pas reguliere");
     }
     T res = 0;
     for (size_t i = 0; i < this->matrice.size(); ++i) {
         if ((std::numeric_limits<T>::max() - res) < matrice.at(i).at(i)) {
-            throw std::overflow_error(
-                    "Dans Matrice : le resultat de l'operation "
-                    "depasse la capcite du type");
+            throw DepacementCapacite("Dans Matrice");
         }
         res += this->matrice.at(i).at(i);
     }
@@ -144,20 +134,18 @@ template<typename T>
 T Matrice<T>::sommeDiagonaleDG() const {
 
     if (!this->estReguliere()) {
-        throw std::out_of_range("Dans Matrice : la matrice n'est pas reguliere");
+        throw std::out_of_range(
+                "Dans Matrice : la matrice n'est pas reguliere");
     }
     T res = 0;
     for (size_t i = 0; i < this->matrice.size(); ++i) {
         if ((std::numeric_limits<T>::max() - res) <
             matrice.at(i).at(this->matrice.size() - 1 - i)) {
-            throw std::overflow_error(
-                    "Dans Matrice : le resultat de l'operation "
-                    "depasse la capcite du type");
+            throw DepacementCapacite("Dans Matrice");
         }
         res += this->matrice.at(i).at(this->matrice.size() - 1 - i);
     }
     return res;
-
 }
 
 template<typename T>
@@ -194,7 +182,6 @@ Matrice<T> Matrice<T>::operator*(const Matrice<T>& matrice) const {
 template<typename T>
 Matrice<T> Matrice<T>::operator+(const Matrice<T>& matrice) const {
     try {
-
         if (this->size() != matrice.size()) {
             throw std::out_of_range("les colonnes ne sont pas compatible");
         }
@@ -210,9 +197,8 @@ Matrice<T> Matrice<T>::operator+(const Matrice<T>& matrice) const {
         }
         return temp;
     }
-    catch (std::overflow_error& e) {
-        throw std::out_of_range("Dans Matrice : le resultat de l'operation demandee"
-                                " depasse la capacite du type");
+    catch (DepacementCapacite& e) {
+        throw DepacementCapacite("Dans Matrice");
     }
 }
 
