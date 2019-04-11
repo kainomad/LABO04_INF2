@@ -19,7 +19,7 @@
 
 #include "Matrice.h"
 
-static const std::string CURRENT_CLASS = "MATRICE";
+const std::string MATRICE_CLASS = "MATRICE";
 
 template<typename T>
 size_t Matrice<T>::size() const noexcept {
@@ -32,9 +32,7 @@ const Ligne<T>& Matrice<T>::at(size_t i) const {
         return this->matrice.at(i);
     }
     catch (std::out_of_range& e) {
-        throw std::out_of_range(
-                "Dans Matrice : La ligne donnee est plus grand que"
-                " depasse la taille matrice");
+        throw DepacementTaille(MATRICE_CLASS);
     }
 }
 
@@ -44,9 +42,7 @@ Ligne<T>& Matrice<T>::at(size_t i) {
         return this->matrice.at(i);
     }
     catch (std::out_of_range& e) {
-        throw std::out_of_range(
-                "Dans Matrice : La ligne donnee est plus grand que"
-                " depasse la taille matrice");
+        throw DepacementTaille(MATRICE_CLASS);
     }
 }
 
@@ -118,8 +114,7 @@ template<typename T>
 T Matrice<T>::sommeDiagonaleGD() const {
 
     if (!this->estReguliere()) {
-        throw std::out_of_range(
-                "Dans Matrice : la matrice n'est pas reguliere");
+        throw ArgumentInvalide(MATRICE_CLASS);
     }
     T res = 0;
     for (size_t i = 0; i < this->matrice.size(); ++i) {
@@ -136,8 +131,7 @@ template<typename T>
 T Matrice<T>::sommeDiagonaleDG() const {
 
     if (!this->estReguliere()) {
-        throw std::out_of_range(
-                "Dans Matrice : la matrice n'est pas reguliere");
+        throw ArgumentInvalide(MATRICE_CLASS);
     }
     T res = 0;
     for (size_t i = 0; i < this->matrice.size(); ++i) {
@@ -163,14 +157,12 @@ template<typename T>
 Matrice<T> Matrice<T>::operator*(const Matrice<T>& matrice) const {
 
     if (this->size() != matrice.size()) {
-        throw std::out_of_range("Dans Matrice : les colonnes ne sont pas "
-                                "compatible");
+        throw ArgumentInvalide(MATRICE_CLASS);
     }
     Matrice<T> temp(this->size());
     for (size_t i = 0; i < this->size(); ++i) {
         if (this->at(i).size() != matrice.at(i).size()) {
-            throw std::out_of_range("Dans Matrice : les colonnes ne sont pas "
-                                    "compatible");
+            throw ArgumentInvalide(MATRICE_CLASS);
         }
         temp.at(i).resize(this->at(i).size());
         for (size_t j = 0; j < this->at(i).size(); ++j) {
@@ -185,12 +177,12 @@ template<typename T>
 Matrice<T> Matrice<T>::operator+(const Matrice<T>& matrice) const {
     try {
         if (this->size() != matrice.size()) {
-            throw std::out_of_range("les colonnes ne sont pas compatible");
+            throw ArgumentInvalide(MATRICE_CLASS);
         }
         Matrice<T> temp(this->size());
         for (size_t i = 0; i < this->size(); ++i) {
             if (this->at(i).size() != matrice.at(i).size()) {
-                throw std::out_of_range("les colonnes ne sont pas compatible");
+                throw ArgumentInvalide(MATRICE_CLASS);
             }
             temp.at(i).resize(this->at(i).size());
             for (size_t j = 0; j < this->at(i).size(); ++j) {

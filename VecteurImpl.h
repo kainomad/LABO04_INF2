@@ -22,12 +22,14 @@
 #include <vector>
 #include <ostream>
 
+const std::string CURRENT_CLASS = "VECTOR";
+
 template<typename T>
 T& Vecteur<T>::at(size_t n) {
     try {
         return data.at(n);
     } catch (std::out_of_range& e) {
-        throw DepacementTaille("Dans Vecteur");
+        throw DepacementTaille(CURRENT_CLASS);
     }
 }
 
@@ -36,7 +38,7 @@ const T& Vecteur<T>::at(size_t n) const {
     try {
         return data.at(n);
     } catch (std::out_of_range& e) {
-        throw DepacementTaille("Dans Vecteur");
+        throw DepacementTaille(CURRENT_CLASS);
     }
 }
 
@@ -51,7 +53,7 @@ void Vecteur<T>::resize(size_t n) {
         data.resize(n);
     }
     catch (std::length_error& e) {
-        throw DepacementVector("Dans Vecteur");
+        throw DepacementVector(CURRENT_CLASS);
     }
 }
 
@@ -61,7 +63,7 @@ void Vecteur<T>::resize(size_t n, const T& valCompl) {
         data.resize(n, valCompl);
     }
     catch (std::length_error& e) {
-        throw DepacementVector("Dans Vecteur");
+        throw DepacementVector(CURRENT_CLASS);
     }
 }
 
@@ -77,7 +79,7 @@ T Vecteur<T>::somme() const {
         return total;
     }
     catch (std::overflow_error& e) {
-        throw DepacementCapacite("Dans Vecteur");
+        throw DepacementCapacite(CURRENT_CLASS);
     }
 }
 
@@ -92,17 +94,15 @@ Vecteur<T> Vecteur<T>::operator*(const Vecteur<T>& v2) const {
         return result;
     }
     catch (std::overflow_error& e) {
-        throw DepacementCapacite("Dans Vecteur");
-        exit(EXIT_FAILURE);
+        throw DepacementCapacite(CURRENT_CLASS);
     }
     catch (std::invalid_argument& e) {
-        throw ArgumentInvalide("Dans Vecteur");
-        exit(EXIT_FAILURE);
+        throw ArgumentInvalide(CURRENT_CLASS);
     }
 }
 
 template<typename T>
-Vecteur<T> Vecteur<T>::operator*(const T mult) const {
+Vecteur<T> Vecteur<T>::operator*(const T& mult) const {
     try {
         std::vector<T> result;
         for (size_t i = 0; i < data.size(); i++) {
@@ -111,10 +111,10 @@ Vecteur<T> Vecteur<T>::operator*(const T mult) const {
         return result;
     }
     catch (std::overflow_error& e) {
-        throw DepacementCapacite("Dans Vecteur");
+        throw DepacementCapacite(CURRENT_CLASS);
     }
     catch (std::invalid_argument& e) {
-        throw ArgumentInvalide("Dans Vecteur");
+        throw ArgumentInvalide(CURRENT_CLASS);
     }
 }
 
@@ -124,11 +124,11 @@ Vecteur<T> Vecteur<T>::operator+(const Vecteur<T>& v2) const {
     size_t tailleMax = std::max(data.size(), v2.size());
     for (size_t i = 0; i < tailleMax; ++i) {
         if ((std::numeric_limits<T>::max() - data.at(i)) < v2.at(i)) {
-            throw DepacementCapacite("Dans Vecteur ");
+            throw DepacementCapacite(CURRENT_CLASS);
         }
         result.push_back(data.at(i) + v2.at(i));
-       
     }
+    return result;
 }
 
 template<typename T>
@@ -142,7 +142,7 @@ Vecteur<T> Vecteur<T>::operator-(const Vecteur<T>& v2) const {
         return result;
     }
     catch (std::overflow_error& e) {
-        throw DepacementCapacite("Dans Vecteur");
+        throw DepacementCapacite(CURRENT_CLASS);
     }
 }
 
