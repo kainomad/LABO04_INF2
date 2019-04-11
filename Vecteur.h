@@ -53,13 +53,13 @@ public:
     operator<<<T>(std::ostream& os, const Vecteur<T>& vecteur);
 
     /**
-     * @throw DepacementCapacite si la produit depasse la capacite du type
+     * @throw DepassementCapacite si la produit depasse la capacite du type
      * @throw ArgumentInvalide si le type ne peut etre mutliplie
      */
     Vecteur<T> operator*(const Vecteur<T>& v2) const;
 
     /**
-    * @throw DepacementCapacite si la produit depasse la capacite du type
+    * @throw DepassementCapacite si la produit depasse la capacite du type
     * @throw ArgumentInvalide si le type ne peut etre mutliplie
     */
     Vecteur<T> operator*(const T& mult) const;
@@ -70,12 +70,12 @@ public:
     }
 
     /**
-    * @throw DepacementCapacite si la somme depasse la capacite du type
+    * @throw DepassementCapacite si la somme depasse la capacite du type
     */
     Vecteur<T> operator+(const Vecteur<T>& v2) const;
 
     /**
-    * @throw DepacementCapacite si la somme depasse la capacite du type
+    * @throw DepassementCapacite si la somme depasse la capacite du type
     */
     Vecteur<T> operator-(const Vecteur<T>& v2) const;
 
@@ -90,7 +90,7 @@ public:
      * @param n
      * @return Retourne une referece constant sur l'element à la position n du
      *         vecteur
-     * @throw DepacementTaille si n depasse la taille du vecteur
+     * @throw DepassementTaille si n depasse la taille du vecteur
      */
     T& at(size_t n);
 
@@ -98,14 +98,14 @@ public:
      * @param n
      * @return Retourne une referece constant sur l'element à la position n du
      *         vecteur
-     * @throw DepacementTaille si n depasse la taille du vecteur
+     * @throw DepassementTaille si n depasse la taille du vecteur
      */
     const T& at(size_t n) const;
 
     /**
      * Redefinit le nombre d'element dans le vecteur
      * @param n
-     * @throw DepacementVector si n depasse la capacite max allouable de vector
+     * @throw DepassementVector si n depasse la capacite max allouable de vector
      */
     void resize(size_t n);
 
@@ -115,13 +115,13 @@ public:
      * vecteur
      * @param n
      * @param valCompl
-     * @throw DepacementVector si n depasse la capacite max allouable de vector
+     * @throw DepassementVector si n depasse la capacite max allouable de vector
      */
     void resize(size_t n, const T& valCompl);
 
     /**
      * @return Retourne la somme des elements du vecteur
-     * @throw DepacementCapacite si le resultat depasse la taille max du type
+     * @throw DepassementCapacite si le resultat depasse la taille max du type
      */
     T somme() const;
 

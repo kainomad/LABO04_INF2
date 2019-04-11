@@ -19,9 +19,9 @@ Compilateur : MinGW-g++ 6.3.0
 #include <stdexcept>
 
 
-class DepacementCapacite : public std::overflow_error {
+class DepassementCapacite : public std::overflow_error {
 public:
-    DepacementCapacite(const std::string& classe,
+    DepassementCapacite(const std::string& classe,
                        const std::string& what_arg = "le resultat de l'operation depasse la capacite du type") noexcept
     :  currentClass(classe), overflow_error(what_arg) {}
     
@@ -33,9 +33,9 @@ private:
     const std::string currentClass = "";
 };
 
-class DepacementTaille : public std::out_of_range {
+class DepassementTaille : public std::out_of_range {
 public:
-    DepacementTaille(const std::string& classe,
+    DepassementTaille(const std::string& classe,
                      const std::string& what_arg = "l'index indique depasse la taille du tableau") noexcept
     :  currentClass(classe), out_of_range(what_arg) {}
     
@@ -47,9 +47,9 @@ private:
     const std::string currentClass = "";
 };
 
-class DepacementVector : public std::length_error {
+class DepassementVector : public std::length_error {
 public:
-    DepacementVector(const std::string& classe,
+    DepassementVector(const std::string& classe,
                      const std::string& what_arg = "le resultat de l'operation depasse la taille maximale d'un vector") noexcept
     :  currentClass(classe), length_error(what_arg) {}
     

@@ -132,11 +132,11 @@ void testError(const vector<T>& v) {
         test = test + v;
         test.at(test.size()+1);
 
-    } catch (DepacementTaille& e) {
+    } catch (DepassementTaille& e) {
         cout << e.where() << " : " << e.what() << endl;
-    } catch (DepacementCapacite& e) {
+    } catch (DepassementCapacite& e) {
         cout << e.where() << " : " << e.what() << endl;
-    } catch (DepacementVector& e){
+    } catch (DepassementVector& e){
         cout << e.where() << " : " << e.what() << endl;
     } catch (ArgumentInvalide& e){
         cout << e.where() << " : " << e.what() << endl;

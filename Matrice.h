@@ -76,7 +76,7 @@ public:
     /**
      * @param i
      * @return retourne une reference le Vecteur de la ligne i de la matrice
-     * @throw DepacementTaille si i depasse la taille de Vecteur
+     * @throw DepassementTaille si i depasse la taille de Vecteur
      */
     Ligne<T>& at(size_t i);
 
@@ -84,7 +84,7 @@ public:
     * @param i
     * @return retourne une réference constant le Vecteur de la ligne i de la
      *        matrice
-    * @throw DepacementTaille si i depasse la taille de Vecteur
+    * @throw DepassementTaille si i depasse la taille de Vecteur
     */
     const Ligne<T>& at(size_t i) const;
 
@@ -117,28 +117,28 @@ public:
     /**
      *
      * @return Retorune un vecteur contant la somme de chaque lignes
-     * @throw DepacementCapacite si le resutlat depasse la capacite du type
+     * @throw DepassementCapacite si le resutlat depasse la capacite du type
      */
     Vecteur<T> sommeLigne() const;
 
     /**
      *
      * @return Retorune un vecteur contant la somme de chaque colonne
-     * @throw DepacementCapacite si le resutlat depasse la capacite du type
+     * @throw DepassementCapacite si le resutlat depasse la capacite du type
      */
     Vecteur<T> sommeColonne() const;
 
     /**
      *
      * @return Retourne la somme de la diagonale Gauche-Droite
-     * @throw DepacementCapacite si la somme depasse la capacite du type
+     * @throw DepassementCapacite si la somme depasse la capacite du type
      */
     T sommeDiagonaleGD() const;
 
     /**
      *
      * @return Retourne la somme de la diagonale Droite-Gauche
-     * @throw DepacementCapacite si la somme depasse la capacite du type
+     * @throw DepassementCapacite si la somme depasse la capacite du type
      */
     T sommeDiagonaleDG() const;
 
@@ -150,7 +150,7 @@ public:
     Matrice<T> operator*(const Matrice<T>& matrice) const;
 
     /**
-     * @throw DepacementCapacite si la somme depasse la capacite du type
+     * @throw DepassementCapacite si la somme depasse la capacite du type
      * @throw ArgumentInvalide si les lignes ou colonnes ne sont pas comptibles
      */
     Matrice<T> operator+(const Matrice<T>& matrice) const;

@@ -32,7 +32,7 @@ const Ligne<T>& Matrice<T>::at(size_t i) const {
         return this->matrice.at(i);
     }
     catch (std::out_of_range& e) {
-        throw DepacementTaille(MATRICE_CLASS);
+        throw DepassementTaille(MATRICE_CLASS);
     }
 }
 
@@ -42,7 +42,7 @@ Ligne<T>& Matrice<T>::at(size_t i) {
         return this->matrice.at(i);
     }
     catch (std::out_of_range& e) {
-        throw DepacementTaille(MATRICE_CLASS);
+        throw DepassementTaille(MATRICE_CLASS);
     }
 }
 
@@ -85,8 +85,8 @@ Vecteur<T> Matrice<T>::sommeLigne() const {
     for (size_t i = 0; i < this->matrice.size(); ++i) {
         try {
             resultat.at(i) += this->matrice.at(i).somme();
-        } catch (DepacementCapacite& e) {
-            throw DepacementCapacite(VECTOR_CLASS);
+        } catch (DepassementCapacite& e) {
+            throw DepassementCapacite(VECTOR_CLASS);
         } catch (ArgumentInvalide& e){
             throw ArgumentInvalide(VECTOR_CLASS);
         }
@@ -105,8 +105,8 @@ Vecteur<T> Matrice<T>::sommeColonne() const {
         for (size_t j = 0; j < this->matrice.at(i).size(); ++j) {
             try {
                 resultat.at(j) += this->matrice.at(i).at(j);
-            } catch (DepacementCapacite& e) {
-                throw DepacementCapacite(VECTOR_CLASS);
+            } catch (DepassementCapacite& e) {
+                throw DepassementCapacite(VECTOR_CLASS);
             } catch (ArgumentInvalide& e){
                 throw ArgumentInvalide(VECTOR_CLASS);
             }
@@ -126,7 +126,7 @@ T Matrice<T>::sommeDiagonaleGD() const {
     T res = 0;
     for (size_t i = 0; i < this->matrice.size(); ++i) {
         if ((std::numeric_limits<T>::max() - res) < matrice.at(i).at(i)) {
-            throw DepacementCapacite(VECTOR_CLASS);
+            throw DepassementCapacite(VECTOR_CLASS);
         }
         res += this->matrice.at(i).at(i);
     }
@@ -144,7 +144,7 @@ T Matrice<T>::sommeDiagonaleDG() const {
     for (size_t i = 0; i < this->matrice.size(); ++i) {
         if ((std::numeric_limits<T>::max() - res) <
             matrice.at(i).at(this->matrice.size() - 1 - i)) {
-            throw DepacementCapacite(VECTOR_CLASS);
+            throw DepassementCapacite(VECTOR_CLASS);
         }
         res += this->matrice.at(i).at(this->matrice.size() - 1 - i);
     }
@@ -159,7 +159,7 @@ Matrice<T> Matrice<T>::operator*(const T& val) const {
         temp.at(i) = this->matrice.at(i) * val;
     }
     }
-    catch (DepacementCapacite& e) {
+    catch (DepassementCapacite& e) {
         throw;
     }
     return temp;
@@ -204,8 +204,8 @@ Matrice<T> Matrice<T>::operator+(const Matrice<T>& matrice) const {
         }
         return temp;
     }
-    catch (DepacementCapacite& e) {
-        throw DepacementCapacite(VECTOR_CLASS);
+    catch (DepassementCapacite& e) {
+        throw DepassementCapacite(VECTOR_CLASS);
     } catch (ArgumentInvalide& e){
         throw ArgumentInvalide(VECTOR_CLASS);
     }

@@ -35,7 +35,7 @@ T& Vecteur<T>::at(size_t n) {
     try {
         return data.at(n);
     } catch (std::out_of_range& e) {
-        throw DepacementTaille(VECTOR_CLASS);
+        throw DepassementTaille(VECTOR_CLASS);
     }
 }
 
@@ -44,7 +44,7 @@ const T& Vecteur<T>::at(size_t n) const {
     try {
         return data.at(n);
     } catch (std::out_of_range& e) {
-        throw DepacementTaille(VECTOR_CLASS);
+        throw DepassementTaille(VECTOR_CLASS);
     }
 }
 
@@ -59,7 +59,7 @@ void Vecteur<T>::resize(size_t n) {
         data.resize(n);
     }
     catch (std::length_error& e) {
-        throw DepacementVector(VECTOR_CLASS);
+        throw DepassementVector(VECTOR_CLASS);
     }
 }
 
@@ -69,7 +69,7 @@ void Vecteur<T>::resize(size_t n, const T& valCompl) {
         data.resize(n, valCompl);
     }
     catch (std::length_error& e) {
-        throw DepacementVector(VECTOR_CLASS);
+        throw DepassementVector(VECTOR_CLASS);
     }
 }
 
@@ -87,7 +87,7 @@ T Vecteur<T>::somme() const {
         }
     }
     catch (std::overflow_error& e) {
-        throw DepacementCapacite(VECTOR_CLASS);
+        throw DepassementCapacite(VECTOR_CLASS);
     }
 }
 
@@ -102,7 +102,7 @@ Vecteur<T> Vecteur<T>::operator*(const Vecteur<T>& v2) const {
         return result;
     }
     catch (std::overflow_error& e) {
-        throw DepacementCapacite(VECTOR_CLASS);
+        throw DepassementCapacite(VECTOR_CLASS);
     }
     catch (std::invalid_argument& e) {
         throw ArgumentInvalide(VECTOR_CLASS);
@@ -119,7 +119,7 @@ Vecteur<T> Vecteur<T>::operator*(const T& mult) const {
         return result;
     }
     catch (std::overflow_error& e) {
-        throw DepacementCapacite(VECTOR_CLASS);
+        throw DepassementCapacite(VECTOR_CLASS);
     }
     catch (std::invalid_argument& e) {
         throw ArgumentInvalide(VECTOR_CLASS);
@@ -134,7 +134,7 @@ Vecteur<T> Vecteur<T>::operator+(const Vecteur<T>& v2) const {
     }
     for (size_t i = 0; i < this->size(); ++i) {
         if ((maximum() - data.at(i)) < v2.at(i)) {
-            throw DepacementCapacite(VECTOR_CLASS);
+            throw DepassementCapacite(VECTOR_CLASS);
         }
         result.push_back(data.at(i) + v2.at(i));
     }
@@ -152,7 +152,7 @@ Vecteur<T> Vecteur<T>::operator-(const Vecteur<T>& v2) const {
         return result;
     }
     catch (std::overflow_error& e) {
-        throw DepacementCapacite(VECTOR_CLASS);
+        throw DepassementCapacite(VECTOR_CLASS);
     }
 }
 
