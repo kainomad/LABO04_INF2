@@ -19,6 +19,8 @@
 
 #include "Matrice.h"
 
+static const std::string CURRENT_CLASS = "MATRICE";
+
 template<typename T>
 size_t Matrice<T>::size() const noexcept {
     return this->matrice.size();
@@ -88,7 +90,7 @@ Vecteur<T> Matrice<T>::sommeLigne() const {
         try {
             resultat.at(i) += this->matrice.at(i).somme();
         } catch (DepacementCapacite& e) {
-            throw DepacementCapacite("Dans Matrice");
+            throw DepacementCapacite(CURRENT_CLASS);
         }
     }
     return resultat;
@@ -103,7 +105,7 @@ Vecteur<T> Matrice<T>::sommeColonne() const {
             try {
                 resultat.at(j) += this->matrice.at(i).at(j);
             } catch (DepacementCapacite& e) {
-                throw DepacementCapacite("Dans Matrice");
+                throw DepacementCapacite(CURRENT_CLASS);
             }
 
         }
@@ -122,7 +124,7 @@ T Matrice<T>::sommeDiagonaleGD() const {
     T res = 0;
     for (size_t i = 0; i < this->matrice.size(); ++i) {
         if ((std::numeric_limits<T>::max() - res) < matrice.at(i).at(i)) {
-            throw DepacementCapacite("Dans Matrice");
+            throw DepacementCapacite(CURRENT_CLASS);
         }
         res += this->matrice.at(i).at(i);
     }
@@ -141,7 +143,7 @@ T Matrice<T>::sommeDiagonaleDG() const {
     for (size_t i = 0; i < this->matrice.size(); ++i) {
         if ((std::numeric_limits<T>::max() - res) <
             matrice.at(i).at(this->matrice.size() - 1 - i)) {
-            throw DepacementCapacite("Dans Matrice");
+            throw DepacementCapacite(CURRENT_CLASS);
         }
         res += this->matrice.at(i).at(this->matrice.size() - 1 - i);
     }
@@ -198,7 +200,7 @@ Matrice<T> Matrice<T>::operator+(const Matrice<T>& matrice) const {
         return temp;
     }
     catch (DepacementCapacite& e) {
-        throw DepacementCapacite("Dans Matrice");
+        throw DepacementCapacite(CURRENT_CLASS);
     }
 }
 

@@ -38,6 +38,21 @@ int main() {
     vector<int> aInt = {1, 2, 3, 4, 5};
     vector<int> bInt = {2, 3, 4, 5, 6};
 
+    /*cout << "TEST AVEC INT ---------------" << endl;
+    test(aInt, bInt, 2);
+
+//    vector<char> aChar = {'a','b', 'c'};
+//    vector<char> bChar = {'a','b', 'f'};
+//    cout << "TEST AVEC CHAR---------------"  << endl;
+//    test(aChar, bChar, 'a');
+
+    vector<double> aDouble = {1.0, 3.4, 5.6};
+    vector<double> bDouble = {5.7, .3, 8.2};
+    cout << "TEST AVEC DOUBLE---------------" << endl;
+    test(aDouble, bDouble, .5);*/
+    testError(aInt);
+
+
     system("PAUSE");
     return EXIT_SUCCESS;
 }
@@ -83,20 +98,21 @@ void test(vector<T> a, vector<T> b, const T& val) {
     m.resize(5);
     cout << "resize ligne a 5 de la matrice m: " << m << endl;
 
-    cout << "Matrice mVide : " << boolalpha << mVide.estVide() << endl;
+    cout << "Matrice mVide estVide : " << boolalpha << mVide.estVide() << endl;
 
     cout << "Matrice m regiliere : " << boolalpha << m.estReguliere() << endl;
 
 
-    cout << "somme des lignes de la matrice m : " << m.sommeLigne() << endl;
-    cout << "somme des colonnes de la matrice m : " << m.sommeColonne() << endl;
+    cout << "Somme des lignes de la matrice m : " << m.sommeLigne() << endl;
+    cout << "Somme des colonnes de la matrice m : " << m.sommeColonne() << endl;
     m.resize(5, 5);
-    cout << "somme des diagonale GD de la matrice m : " << m.sommeDiagonaleGD()
-         <<
-         endl;
-    cout << "somme des diagonale DG de la matrice m : " << m.sommeDiagonaleDG()
-         <<
-         endl;
+    cout << "resize de la matrce m en une matrice 5x5" << endl;
+    cout << "somme de la diagonale GD de la matrice m : "
+         << m.sommeDiagonaleGD()
+         << endl;
+    cout << "somme de la diagonale DG de la matrice m : "
+         << m.sommeDiagonaleDG()
+         << endl;
 
     cout << "La matrice m multi par " << val << " : " << m * val << endl;
 
@@ -115,9 +131,13 @@ void testError(const vector<T>& v) {
         //test.at(test.size() + 1);
         test.at(0) = numeric_limits<T>::max();
         test = test + v;
-    } catch (out_of_range& e) {
-        cout << e.what() << endl;
+    } catch (DepacementTaille& e) {
+        cout << e.where() << " : " << e.what() << endl;
     } catch (DepacementCapacite& e) {
+        cout << e.where() << " : " << e.what() << endl;
+    } catch (DepacementVector& e){
+        cout << e.where() << " : " << e.what() << endl;
+    } catch (ArgumentInvalide& e){
         cout << e.where() << " : " << e.what() << endl;
     }
 }

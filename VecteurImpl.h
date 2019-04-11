@@ -47,56 +47,55 @@ size_t Vecteur<T>::size() const noexcept {
 
 template<typename T>
 void Vecteur<T>::resize(size_t n) {
-    try{
-    data.resize(n);
+    try {
+        data.resize(n);
     }
-    catch(std::length_error& e){
+    catch (std::length_error& e) {
         throw DepacementVector("Dans Vecteur");
     }
 }
 
 template<typename T>
 void Vecteur<T>::resize(size_t n, const T& valCompl) {
-    try{
-    data.resize(n, valCompl);
+    try {
+        data.resize(n, valCompl);
     }
-    catch(std::length_error& e){
+    catch (std::length_error& e) {
         throw DepacementVector("Dans Vecteur");
     }
 }
 
-template <typename T>
-T Vecteur<T>::somme() const{
+template<typename T>
+T Vecteur<T>::somme() const {
     try {
         T total = data.at(0);
-        if (data.size() > 1){
-            for (size_t i = 1; i < data.size(); i++){
+        if (data.size() > 1) {
+            for (size_t i = 1; i < data.size(); i++) {
                 total += data.at(i);
             }
         }
         return total;
     }
-    catch (std::overflow_error & e){
+    catch (std::overflow_error& e) {
         throw DepacementCapacite("Dans Vecteur");
-        exit(EXIT_FAILURE);
     }
 }
 
 template<typename T>
 Vecteur<T> Vecteur<T>::operator*(const Vecteur<T>& v2) const {
-    try{
-    std::vector<T> result;
-    size_t tailleMax = std::max(data.size(), v2.size());
-    for (size_t i = 0; i < tailleMax; i++) {
-        result.push_back(data.at(i) * v2.at(i));
+    try {
+        std::vector<T> result;
+        size_t tailleMax = std::max(data.size(), v2.size());
+        for (size_t i = 0; i < tailleMax; i++) {
+            result.push_back(data.at(i) * v2.at(i));
+        }
+        return result;
     }
-    return result;
-    }
-    catch (std::overflow_error & e){
+    catch (std::overflow_error& e) {
         throw DepacementCapacite("Dans Vecteur");
 
     }
-    catch (std::invalid_argument & e){
+    catch (std::invalid_argument& e) {
         throw ArgumentInvalide("Dans Vecteur");
 
     }
@@ -104,18 +103,18 @@ Vecteur<T> Vecteur<T>::operator*(const Vecteur<T>& v2) const {
 
 template<typename T>
 Vecteur<T> Vecteur<T>::operator*(const T mult) const {
-    try{
-    std::vector<T> result;
-    for (size_t i = 0; i < data.size(); i++) {
-        result.push_back(data.at(i) * mult);
+    try {
+        std::vector<T> result;
+        for (size_t i = 0; i < data.size(); i++) {
+            result.push_back(data.at(i) * mult);
+        }
+        return result;
     }
-    return result;
-    }
-    catch (std::overflow_error & e){
+    catch (std::overflow_error& e) {
         throw DepacementCapacite("Dans Vecteur");
 
     }
-    catch (std::invalid_argument & e){
+    catch (std::invalid_argument& e) {
         throw ArgumentInvalide("Dans Vecteur");
 
     }
@@ -123,30 +122,28 @@ Vecteur<T> Vecteur<T>::operator*(const T mult) const {
 
 template<typename T>
 Vecteur<T> Vecteur<T>::operator+(const Vecteur<T>& v2) const {
-    try{
     std::vector<T> result;
     size_t tailleMax = std::max(data.size(), v2.size());
     for (size_t i = 0; i < tailleMax; ++i) {
+        if ((std::numeric_limits<T>::max() - data.at(i)) < v2.at(i)) {
+            throw DepacementCapacite("Dans Vecteur ");
+        }
         result.push_back(data.at(i) + v2.at(i));
-    }
-    return result;
-    }
-    catch (std::overflow_error & e){
-        throw DepacementCapacite("Dans Vecteur");
+       
     }
 }
 
 template<typename T>
 Vecteur<T> Vecteur<T>::operator-(const Vecteur<T>& v2) const {
-    try{
-    std::vector<T> result;
-    size_t tailleMax = std::max(data.size(), v2.size());
-    for (size_t i = 0; i < tailleMax; i++) {
-        result.push_back(data.at(i) - v2.at(i));
+    try {
+        std::vector<T> result;
+        size_t tailleMax = std::max(data.size(), v2.size());
+        for (size_t i = 0; i < tailleMax; i++) {
+            result.push_back(data.at(i) - v2.at(i));
+        }
+        return result;
     }
-    return result;
-    }
-    catch (std::overflow_error & e){
+    catch (std::overflow_error& e) {
         throw DepacementCapacite("Dans Vecteur");
     }
 }
