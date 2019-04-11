@@ -128,8 +128,10 @@ Vecteur<T> Vecteur<T>::operator*(const T& mult) const {
 template<typename T>
 Vecteur<T> Vecteur<T>::operator+(const Vecteur<T>& v2) const {
     std::vector<T> result;
-    size_t tailleMax = std::max(data.size(), v2.size());
-    for (size_t i = 0; i < tailleMax; ++i) {
+    if(v2.size() != this->size()){
+        throw ArgumentInvalide(VECTOR_CLASS);
+    }
+    for (size_t i = 0; i < this->size(); ++i) {
         if ((maximum() - data.at(i)) < v2.at(i)) {
             throw DepacementCapacite(VECTOR_CLASS);
         }
