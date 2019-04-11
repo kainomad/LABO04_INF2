@@ -30,7 +30,7 @@ const Ligne<T>& Matrice<T>::at(size_t i) const {
         return this->matrice.at(i);
     }
     catch (std::out_of_range& e) {
-        throw std::out_of_range(
+        throw DepacementTaille(
                 "Dans Matrice : La ligne donnee est plus grand que"
                 " depasse la taille matrice");
     }
@@ -42,7 +42,7 @@ Ligne<T>& Matrice<T>::at(size_t i) {
         return this->matrice.at(i);
     }
     catch (std::out_of_range& e) {
-        throw std::out_of_range(
+        throw DepacementTaille(
                 "Dans Matrice : La ligne donnee est plus grand que"
                 " depasse la taille matrice");
     }
@@ -161,13 +161,13 @@ template<typename T>
 Matrice<T> Matrice<T>::operator*(const Matrice<T>& matrice) const {
 
     if (this->size() != matrice.size()) {
-        throw std::out_of_range("Dans Matrice : les colonnes ne sont pas "
+        throw DepacementTaille("Dans Matrice : les colonnes ne sont pas "
                                 "compatible");
     }
     Matrice<T> temp(this->size());
     for (size_t i = 0; i < this->size(); ++i) {
         if (this->at(i).size() != matrice.at(i).size()) {
-            throw std::out_of_range("Dans Matrice : les colonnes ne sont pas "
+            throw DepacementTaille("Dans Matrice : les colonnes ne sont pas "
                                     "compatible");
         }
         temp.at(i).resize(this->at(i).size());

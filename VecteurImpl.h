@@ -94,11 +94,11 @@ Vecteur<T> Vecteur<T>::operator*(const Vecteur<T>& v2) const {
     }
     catch (std::overflow_error & e){
         throw DepacementCapacite("Dans Vecteur");
-        exit(EXIT_FAILURE);
+
     }
     catch (std::invalid_argument & e){
         throw ArgumentInvalide("Dans Vecteur");
-        exit(EXIT_FAILURE);
+
     }
 }
 
@@ -113,11 +113,11 @@ Vecteur<T> Vecteur<T>::operator*(const T mult) const {
     }
     catch (std::overflow_error & e){
         throw DepacementCapacite("Dans Vecteur");
-        exit(EXIT_FAILURE);
+
     }
     catch (std::invalid_argument & e){
         throw ArgumentInvalide("Dans Vecteur");
-        exit(EXIT_FAILURE);
+
     }
 }
 
