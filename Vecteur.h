@@ -6,7 +6,7 @@
  Auteur(s)   : Chau Ying Kot, Johann Werkle
  Date        : 02.04.2019
  
- But         : Cette claase a pour but de modelise un vecteur avec la classe
+ But         : Cette classe a pour but de modelise un vecteur avec la classe
                Vector et de gerer les differents exceptions avec des classes
                d'exceptions personalisees
  
@@ -59,8 +59,7 @@ public:
     }
     Vecteur<T> operator+(const Vecteur<T>& v2) const;
     Vecteur<T> operator-(const Vecteur<T>& v2) const;
-    Vecteur<T> operator*(const T mult) const;
-//    std::ostream& operator* <T> (T value);
+
 
     /**
      *

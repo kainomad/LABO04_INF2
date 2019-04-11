@@ -1,12 +1,12 @@
 /*
  -----------------------------------------------------------------------------------
  Laboratoire : 04
- Fichier     : main.cpp
+ Fichier     : MatriceImpl.h
  Groupe      : Labo_04
  Auteur(s)   : Chau Ying Kot, Johann Werkle
  Date        : 02.04.2019
  
- But         :
+ But         : Implémentation des fonctions de la classe Matrice
  
  Remarque(s) : -
  

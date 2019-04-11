@@ -38,22 +38,6 @@ int main() {
     vector<int> aInt = {1, 2, 3, 4, 5};
     vector<int> bInt = {2, 3, 4, 5, 6};
 
-    /*cout << "TEST AVEC INT ---------------" << endl;
-    test(aInt, bInt, 2);
-
-//    vector<char> aChar = {'a','b', 'c'};
-//    vector<char> bChar = {'a','b', 'f'};
-//    cout << "TEST AVEC CHAR---------------"  << endl;
-//    test(aChar, bChar, 'a');
-
-    vector<double> aDouble = {1.0, 3.4, 5.6};
-    vector<double> bDouble = {5.7, .3, 8.2};
-    cout << "TEST AVEC DOUBLE---------------" << endl;
-    test(aDouble, bDouble, .5);*/
-
-    //testError(aInt);
-
-
     system("PAUSE");
     return EXIT_SUCCESS;
 }

@@ -1,7 +1,7 @@
 /*
  -----------------------------------------------------------------------------------
  Laboratoire : 04
- Fichier     : main.cpp
+ Fichier     : Matrice.h
  Groupe      : Labo_04
  Auteur(s)   : Chau Ying Kot, Johann Werkle
  Date        : 02.04.2019
