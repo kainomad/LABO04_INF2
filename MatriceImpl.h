@@ -153,10 +153,16 @@ T Matrice<T>::sommeDiagonaleDG() const {
 template<typename T>
 Matrice<T> Matrice<T>::operator*(const T& val) const {
     Matrice<T> temp(this->matrice.size());
+    try{
     for (size_t i = 0; i < this->matrice.size(); ++i) {
         temp.at(i) = this->matrice.at(i) * val;
     }
+    }
+    catch (DepacementCapacite& e) {
+        throw;
+    }
     return temp;
+    
 }
 
 template<typename T>

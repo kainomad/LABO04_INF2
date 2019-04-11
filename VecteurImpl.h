@@ -112,7 +112,6 @@ Vecteur<T> Vecteur<T>::operator*(const T mult) const {
     }
     catch (std::overflow_error& e) {
         throw DepacementCapacite("Dans Vecteur");
-
     }
     catch (std::invalid_argument& e) {
         throw ArgumentInvalide("Dans Vecteur");
@@ -131,6 +130,7 @@ Vecteur<T> Vecteur<T>::operator+(const Vecteur<T>& v2) const {
         result.push_back(data.at(i) + v2.at(i));
        
     }
+    return result;
 }
 
 template<typename T>

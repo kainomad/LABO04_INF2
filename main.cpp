@@ -51,7 +51,7 @@ int main() {
     cout << "TEST AVEC DOUBLE---------------" << endl;
     test(aDouble, bDouble, .5);*/
     testError(aInt);
-
+    
 
     system("PAUSE");
     return EXIT_SUCCESS;

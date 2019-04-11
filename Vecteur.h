@@ -49,15 +49,27 @@ public:
     
     friend std::ostream& operator<< <T> (std::ostream& os, const Vecteur<T>& vecteur);
     /**
-     * @throw DepacementCapacite si la somme depasse la capacite du type
+     * @throw DepacementCapacite si la multiplication depasse la capacite du type
+     * @throw ArgumentInvalide si l'un des paramètres est incompatible
      */
     Vecteur<T> operator*(const Vecteur<T>& v2) const;
+    /**
+     * @throw DepacementCapacite si la multiplication depasse la capacite du type
+     * @throw ArgumentInvalide si l'un des paramètres est incompatible
+     */
     Vecteur<T> operator*(const T mult) const;
     friend Vecteur<T> operator*(const T mult, const Vecteur<T>& v){
         //Nécessaire pour instancier la fonction dans le main à la compilation
         return v * mult;
     }
+    /**
+     * @throw DepacementCapacite si la somme depasse la capacite du type
+     */
     Vecteur<T> operator+(const Vecteur<T>& v2) const;
+    
+    /**
+     * @throw DepacementCapacite si la somme depasse la capacite du type
+     */
     Vecteur<T> operator-(const Vecteur<T>& v2) const;
 
 
