@@ -130,7 +130,7 @@ Vecteur<T> Vecteur<T>::operator+(const Vecteur<T>& v2) const {
     std::vector<T> result;
     size_t tailleMax = std::max(data.size(), v2.size());
     for (size_t i = 0; i < tailleMax; ++i) {
-        if ((std::numeric_limits<T>::max() - data.at(i)) < v2.at(i)) {
+        if ((maximum() - data.at(i)) < v2.at(i)) {
             throw DepacementCapacite(VECTOR_CLASS);
         }
         result.push_back(data.at(i) + v2.at(i));
