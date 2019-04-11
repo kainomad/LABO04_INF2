@@ -16,7 +16,7 @@
 #ifndef MatriceImpl_h
 #define MatriceImpl_h
 
-
+#include "Errors.h"
 #include "Matrice.h"
 
 const std::string MATRICE_CLASS = "MATRICE";

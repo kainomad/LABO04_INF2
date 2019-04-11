@@ -1,20 +1,20 @@
 /*
 -----------------------------------------------------------------------------------
 Laboratoire : 04
-Fichier     : Vector_errors.h
+Fichier     : Errors.h
 Groupe      : Labo_04
 Auteur(s)   : Chau Ying Kot, Johann Werkle
 Date        : 02.04.2019
 
-But         : Regroupe les classes d'erreurs personalisés
+But         : Regroupe les classes d'erreurs personalisées
 
 Remarque(s) : -
 
 Compilateur : MinGW-g++ 6.3.0
 -----------------------------------------------------------------------------------
 */
-#ifndef LABO04_INF2_VECTOR_ERRORS_H
-#define LABO04_INF2_VECTOR_ERRORS_H
+#ifndef LABO04_INF2_ERRORS_H
+#define LABO04_INF2_ERRORS_H
 
 #include <stdexcept>
 // out_of_range
@@ -91,4 +91,4 @@ private:
     const std::string currentClass = "";
 };
 
-#endif //LABO04_INF2_VECTOR_ERROR_H
+#endif //LABO04_INF2_ERRORS_H

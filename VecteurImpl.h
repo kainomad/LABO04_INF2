@@ -17,7 +17,7 @@
 #ifndef VecteurImpl_h
 #define VecteurImpl_h
 
-#include "Vector_errors.h"
+#include "Errors.h"
 
 #include <vector>
 #include <ostream>
