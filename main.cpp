@@ -39,14 +39,14 @@ int main() {
 
 
     vector<int> aInt = {1, 2, 3, 4, 5};
-    vector<int> bInt = {2, 3, 4, 5, 6};
-    cout << "TEST AVEC INT ---------------" << endl;
-    test(aInt, bInt, 2);
-
-    vector<double> aDouble = {1.0, 3.4, 5.6};
-    vector<double> bDouble = {5.7, .3, 8.2};
-    cout << "TEST AVEC DOUBLE---------------" << endl;
-    test(aDouble, bDouble, .5);
+//    vector<int> bInt = {2, 3, 4, 5, 6};
+//    cout << "TEST AVEC INT ---------------" << endl;
+//    test(aInt, bInt, 2);
+//
+//    vector<double> aDouble = {1.0, 3.4, 5.6};
+//    vector<double> bDouble = {5.7, .3, 8.2};
+//    cout << "TEST AVEC DOUBLE---------------" << endl;
+//    test(aDouble, bDouble, .5);
 
     testError(aInt);
 
@@ -128,9 +128,15 @@ void testError(const vector<T>& v) {
     try {
         Vecteur<T> test = v;
         //test.at(test.size() + 1);
-        test.at(0) = numeric_limits<T>::max();
-        test = test + v;
-        test.at(test.size()+1);
+//        test.at(0) = numeric_limits<T>::max();
+//        test = test + v;
+//        test.at(test.size()+1);
+//
+        Matrice<T> matrice(2);
+        matrice.at(0) = test;
+        matrice.at(1) = test;
+
+       // matrice.at(matrice.size()+1);
 
     } catch (DepassementTaille& e) {
         cout << e.where() << " : " << e.what() << endl;
