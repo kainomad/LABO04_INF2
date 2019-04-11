@@ -42,7 +42,7 @@ int main() {
     vector<int> bInt = {2, 3, 4, 5, 6};
 //    vector<string> aStr = {"a", "b", "c"};
 //    vector<string> bStr = {"d", "e", "f"};
-    //testError(aInt);
+    testError(aInt);
 //    testText(aStr, bStr);
 
     system("PAUSE");

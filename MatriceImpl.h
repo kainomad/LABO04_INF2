@@ -87,6 +87,8 @@ Vecteur<T> Matrice<T>::sommeLigne() const {
             resultat.at(i) += this->matrice.at(i).somme();
         } catch (DepacementCapacite& e) {
             throw DepacementCapacite(VECTOR_CLASS);
+        } catch (ArgumentInvalide& e){
+            throw ArgumentInvalide(VECTOR_CLASS);
         }
     }
     return resultat;
@@ -105,6 +107,8 @@ Vecteur<T> Matrice<T>::sommeColonne() const {
                 resultat.at(j) += this->matrice.at(i).at(j);
             } catch (DepacementCapacite& e) {
                 throw DepacementCapacite(VECTOR_CLASS);
+            } catch (ArgumentInvalide& e){
+                throw ArgumentInvalide(VECTOR_CLASS);
             }
 
         }
@@ -159,7 +163,7 @@ Matrice<T> Matrice<T>::operator*(const T& val) const {
         throw;
     }
     return temp;
-    
+
 }
 
 template<typename T>
@@ -202,6 +206,8 @@ Matrice<T> Matrice<T>::operator+(const Matrice<T>& matrice) const {
     }
     catch (DepacementCapacite& e) {
         throw DepacementCapacite(VECTOR_CLASS);
+    } catch (ArgumentInvalide& e){
+        throw ArgumentInvalide(VECTOR_CLASS);
     }
 }
 
