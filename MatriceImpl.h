@@ -86,7 +86,7 @@ Vecteur<T> Matrice<T>::sommeLigne() const {
         try {
             resultat.at(i) += this->matrice.at(i).somme();
         } catch (DepacementCapacite& e) {
-            throw DepacementCapacite(CURRENT_CLASS);
+            throw DepacementCapacite(VECTOR_CLASS);
         }
     }
     return resultat;
@@ -96,12 +96,15 @@ Vecteur<T> Matrice<T>::sommeLigne() const {
 template<typename T>
 Vecteur<T> Matrice<T>::sommeColonne() const {
     Vecteur<T> resultat(this->matrice.at(1).size());
+    if(!this->estReguliere()){
+        throw MatriceReguliereError(MATRICE_CLASS);
+    }
     for (size_t i = 0; i < this->matrice.size(); ++i) {
         for (size_t j = 0; j < this->matrice.at(i).size(); ++j) {
             try {
                 resultat.at(j) += this->matrice.at(i).at(j);
             } catch (DepacementCapacite& e) {
-                throw DepacementCapacite(CURRENT_CLASS);
+                throw DepacementCapacite(VECTOR_CLASS);
             }
 
         }
@@ -114,12 +117,12 @@ template<typename T>
 T Matrice<T>::sommeDiagonaleGD() const {
 
     if (!this->estReguliere()) {
-        throw ArgumentInvalide(MATRICE_CLASS);
+        throw MatriceReguliereError(MATRICE_CLASS);
     }
     T res = 0;
     for (size_t i = 0; i < this->matrice.size(); ++i) {
         if ((std::numeric_limits<T>::max() - res) < matrice.at(i).at(i)) {
-            throw DepacementCapacite(CURRENT_CLASS);
+            throw DepacementCapacite(VECTOR_CLASS);
         }
         res += this->matrice.at(i).at(i);
     }
@@ -131,13 +134,13 @@ template<typename T>
 T Matrice<T>::sommeDiagonaleDG() const {
 
     if (!this->estReguliere()) {
-        throw ArgumentInvalide(MATRICE_CLASS);
+        throw MatriceReguliereError(MATRICE_CLASS);
     }
     T res = 0;
     for (size_t i = 0; i < this->matrice.size(); ++i) {
         if ((std::numeric_limits<T>::max() - res) <
             matrice.at(i).at(this->matrice.size() - 1 - i)) {
-            throw DepacementCapacite(CURRENT_CLASS);
+            throw DepacementCapacite(VECTOR_CLASS);
         }
         res += this->matrice.at(i).at(this->matrice.size() - 1 - i);
     }
@@ -192,7 +195,7 @@ Matrice<T> Matrice<T>::operator+(const Matrice<T>& matrice) const {
         return temp;
     }
     catch (DepacementCapacite& e) {
-        throw DepacementCapacite(CURRENT_CLASS);
+        throw DepacementCapacite(VECTOR_CLASS);
     }
 }
 

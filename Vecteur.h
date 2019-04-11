@@ -1,7 +1,7 @@
 /*
  -----------------------------------------------------------------------------------
  Laboratoire : 04
- Fichier     : main.cpp
+ Fichier     : Vector.h
  Groupe      : Labo_04
  Auteur(s)   : Chau Ying Kot, Johann Werkle
  Date        : 02.04.2019
@@ -125,9 +125,13 @@ public:
      */
     T somme() const;
 
+
 private:
     std::vector<T> data;
+
+    size_t max() const noexcept ;
 };
+
 
 
 #include "VecteurImpl.h"

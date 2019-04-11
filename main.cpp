@@ -129,8 +129,10 @@ void testError(const vector<T>& v) {
     try {
         Vecteur<T> test = v;
         //test.at(test.size() + 1);
-        test.at(0) = numeric_limits<T>::max();
-        test = test + v;
+        //test.at(0) = numeric_limits<T>::max();
+        //test = test + v;
+        test.at(test.size()+1);
+
     } catch (DepacementTaille& e) {
         cout << e.where() << " : " << e.what() << endl;
     } catch (DepacementCapacite& e) {
@@ -138,6 +140,8 @@ void testError(const vector<T>& v) {
     } catch (DepacementVector& e){
         cout << e.where() << " : " << e.what() << endl;
     } catch (ArgumentInvalide& e){
+        cout << e.where() << " : " << e.what() << endl;
+    } catch (MatriceReguliereError& e){
         cout << e.where() << " : " << e.what() << endl;
     }
 }

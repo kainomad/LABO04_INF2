@@ -6,7 +6,7 @@ Groupe      : Labo_04
 Auteur(s)   : Chau Ying Kot, Johann Werkle
 Date        : 02.04.2019
 
-But         : Erreurs
+But         : Regroupe les classes d'erreurs personalisés
 
 Remarque(s) : -
 
@@ -17,11 +17,6 @@ Compilateur : MinGW-g++ 6.3.0
 #define LABO04_INF2_VECTOR_ERRORS_H
 
 #include <stdexcept>
-// out_of_range
-// overflow_error
-// length_error
-// invalid_argument
-// bad_alloc
 
 class DepacementCapacite : public std::overflow_error {
 public:
@@ -40,7 +35,7 @@ private:
 class DepacementTaille : public std::out_of_range {
 public:
     DepacementTaille(const std::string& classe,
-                     const std::string& what_arg = "le resultat de l'operation depasse la taille du tableau") noexcept
+                     const std::string& what_arg = "l'index indique depasse la taille du tableau") noexcept
     :  currentClass(classe), out_of_range(what_arg) {}
     
     std::string where() const noexcept {
@@ -75,6 +70,20 @@ public:
         return currentClass;
     }
     
+private:
+    const std::string currentClass = "";
+};
+
+class MatriceReguliereError : public std::invalid_argument {
+public:
+    MatriceReguliereError(const std::string& classe,
+                     const std::string& what_arg = "La Matrice n'est pas réguliere") noexcept
+            :  currentClass(classe), invalid_argument(what_arg) {}
+
+    std::string where() const noexcept {
+        return currentClass;
+    }
+
 private:
     const std::string currentClass = "";
 };
