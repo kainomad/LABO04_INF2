@@ -130,7 +130,7 @@ private:
     std::vector<T> data;
     
     T maximum() const noexcept;
-    
+    T minimum() const noexcept;
 };
 
 
