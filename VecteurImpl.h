@@ -26,8 +26,7 @@ const std::string VECTOR_CLASS = "VECTOR";
 
 
 template<typename T>
-T Vecteur<T>::maximum() const noexcept
-{
+T Vecteur<T>::maximum() const noexcept {
     return std::numeric_limits<T>::max();
 }
 
@@ -77,13 +76,15 @@ void Vecteur<T>::resize(size_t n, const T& valCompl) {
 template<typename T>
 T Vecteur<T>::somme() const {
     try {
-        T total = data.at(0);
-        if (data.size() > 1) {
+        if (!data.empty()) {
+            T total = data.at(0);
+
             for (size_t i = 1; i < data.size(); i++) {
                 total += data.at(i);
+
             }
+            return total;
         }
-        return total;
     }
     catch (std::overflow_error& e) {
         throw DepacementCapacite(VECTOR_CLASS);
@@ -128,7 +129,7 @@ Vecteur<T> Vecteur<T>::operator*(const T& mult) const {
 template<typename T>
 Vecteur<T> Vecteur<T>::operator+(const Vecteur<T>& v2) const {
     std::vector<T> result;
-    if(v2.size() != this->size()){
+    if (v2.size() != this->size()) {
         throw ArgumentInvalide(VECTOR_CLASS);
     }
     for (size_t i = 0; i < this->size(); ++i) {
