@@ -17,10 +17,7 @@ Compilateur : MinGW-g++ 6.3.0
 #define LABO04_INF2_ERRORS_H
 
 #include <stdexcept>
-// out_of_range
-// overflow_error
-// length_error
-// invalid_argument
+
 
 class DepacementCapacite : public std::overflow_error {
 public:
