@@ -117,6 +117,9 @@ public:
     
 private:
     std::vector<T> data;
+    
+    T maximum() const noexcept;
+    
 };
 
 

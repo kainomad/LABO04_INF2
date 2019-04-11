@@ -32,31 +32,34 @@ void test(vector<T> a, vector<T> b, const T& val);
 template<typename T>
 void testError(const vector<T>& v);
 
+template<typename T>
+void testText(vector<T> a, vector<T> b);
+
 int main() {
 
 
     vector<int> aInt = {1, 2, 3, 4, 5};
     vector<int> bInt = {2, 3, 4, 5, 6};
-
-    /*cout << "TEST AVEC INT ---------------" << endl;
-    test(aInt, bInt, 2);
-
-//    vector<char> aChar = {'a','b', 'c'};
-//    vector<char> bChar = {'a','b', 'f'};
-//    cout << "TEST AVEC CHAR---------------"  << endl;
-//    test(aChar, bChar, 'a');
-
-    vector<double> aDouble = {1.0, 3.4, 5.6};
-    vector<double> bDouble = {5.7, .3, 8.2};
-    cout << "TEST AVEC DOUBLE---------------" << endl;
-    test(aDouble, bDouble, .5);*/
-    testError(aInt);
-    
+//    vector<string> aStr = {"a", "b", "c"};
+//    vector<string> bStr = {"d", "e", "f"};
+    //testError(aInt);
+//    testText(aStr, bStr);
 
     system("PAUSE");
     return EXIT_SUCCESS;
 }
 
+/*template<typename T>
+void testText(vector<T> a, vector<T> b) {
+    
+    Vecteur<T> A = a;
+    Vecteur<T> B = b;
+    cout << "Somme : " << A+B;
+    cout << "Soustraction : " << A-B;
+    cout << "Multiplication : " << A*B;
+}*/
+
+    
 template<typename T>
 void test(vector<T> a, vector<T> b, const T& val) {
 

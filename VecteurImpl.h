@@ -8,7 +8,7 @@
  
  But         : Implémentation des fonctions de la classe Vecteur
  
- Remarque(s) : -
+ Remarque(s) : Fonctionne surtout avec les types numériques.
  
  Compilateur : MinGW-g++ 6.3.0
  -----------------------------------------------------------------------------------
@@ -21,6 +21,14 @@
 
 #include <vector>
 #include <ostream>
+
+
+
+template<typename T>
+T Vecteur<T>::maximum() const noexcept
+{
+    return std::numeric_limits<T>::max();
+}
 
 template<typename T>
 T& Vecteur<T>::at(size_t n) {
@@ -122,9 +130,8 @@ Vecteur<T> Vecteur<T>::operator*(const T mult) const {
 template<typename T>
 Vecteur<T> Vecteur<T>::operator+(const Vecteur<T>& v2) const {
     std::vector<T> result;
-    size_t tailleMax = std::max(data.size(), v2.size());
-    for (size_t i = 0; i < tailleMax; ++i) {
-        if ((std::numeric_limits<T>::max() - data.at(i)) < v2.at(i)) {
+    for (size_t i = 0; i < this->size(); ++i) {
+        if ((maximum() - data.at(i)) < v2.at(i)) {
             throw DepacementCapacite("Dans Vecteur ");
         }
         result.push_back(data.at(i) + v2.at(i));
